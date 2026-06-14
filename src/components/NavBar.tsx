@@ -106,6 +106,22 @@ export default function NavBar() {
           </div>
         </div>
       )}
+
+    {/*Announcement Banner */}
+            {location.pathname !== "/hackathon" && (
+              <a
+                href="/hackathon"
+                className="block w-full bg-[#1f3d32] text-white overflow-hidden whitespace-nowrap py-3 border-b border-white/10"
+              >
+                <div className="animate-marquee inline-block text-sm font-medium tracking-wide">
+
+                  🚀 AyurGenX Hackathon 2026 Registrations Open Now •
+                  AI • Healthcare • Ayurveda • Women's Wellness •
+                  Student Wellness • Click Here to Explore •
+
+                </div>
+              </a>
+            )}
     </nav>
   );
 }

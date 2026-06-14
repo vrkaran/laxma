@@ -140,6 +140,7 @@ function App() {
         <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
         <Route path="/terms" element={<PageTransition><Terms /></PageTransition>} />
         <Route path="/cookies" element={<PageTransition><CookiePolicy /></PageTransition>} />
+        <Route path="/hackathon" element={<Hackathon />} />
       </Routes>
       <Footer />
     </div>
