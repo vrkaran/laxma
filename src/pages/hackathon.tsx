@@ -6,6 +6,10 @@ import {
   Activity,
   Stethoscope,
   Leaf,
+  UserPlus,
+  Layers,
+  Upload,
+  Trophy,
 } from "lucide-react";
 
 import heroBg3 from "../image/hackathon/hero-bg3.jpg";
@@ -393,40 +397,95 @@ const Hackathon = () => {
       </section>
 
       {/* ── TIMELINE ─────────────────────────────────────────── */}
-      <section id="timeline" className="py-20 md:py-28 px-4 md:px-6" style={{ background: "#203A2B" }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-16 md:mb-24">
-            <p className="uppercase mb-3" style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: "clamp(28px, 5vw, 51px)", letterSpacing: "0.3em", color: "white", fontWeight: 700}}>
-              Schedule
-            </p>
-          </div>
+    <section id="timeline" className="py-20 md:py-28 px-4 md:px-6" style={{ background: "#111D16" }}>
+      <div className="max-w-4xl mx-auto">
 
-          <div className="relative flex flex-col md:flex-row justify-between gap-8 md:gap-10">
-            <div className="absolute hidden md:block top-8 left-0 w-full" style={{ height: "1px", background: "linear-gradient(90deg, rgba(56,239,125,0.6), rgba(56,239,125,0.1))" }} />
-            {/* vertical line on mobile */}
-            <div className="absolute md:hidden left-8 top-0 bottom-0" style={{ width: "1px", background: "linear-gradient(180deg, rgba(56,239,125,0.6), rgba(56,239,125,0.1))" }} />
+        <div className="mb-16 md:mb-24">
+          <p className="uppercase mb-3" style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: "clamp(28px, 5vw, 51px)", letterSpacing: "0.3em", color: "white", fontWeight: 700 }}>
+            Schedule
+          </p>
+        </div>
 
-            {timeline.map((item, index) => (
+        <div className="relative">
+
+          {/* vertical line */}
+          <div className="absolute left-7 top-0 bottom-0 w-[1px]" style={{ background: "linear-gradient(180deg, rgba(56,239,125,0.8) 0%, rgba(212,175,55,0.5) 60%, rgba(56,239,125,0.1) 100%)" }} />
+
+          <div className="space-y-6">
+            {[
+              { icon: <UserPlus size={20} />, label: "Registration",        phase: "Phase 01", note: "Open now",                  desc: "Register for the Hackathon and secure your spot.",    color: "#38EF7D", bg: "rgba(56,239,125,0.05)",  clip: "polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%)",  gold: false },
+              { icon: <Layers size={20} />,   label: "Track Release",       phase: "Phase 02", note: "Problem statements dropped", desc: "Check the tracks, pick one and start ideating.",      color: "#38EF7D", bg: "rgba(56,239,125,0.04)",  clip: "polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px))", gold: false },
+              { icon: <Upload size={20} />,   label: "Project Submission",  phase: "Phase 03", note: "48-hour sprint ends",        desc: "Submit your MVP before the deadline. Make it count.", color: "#D4AF37", bg: "rgba(212,175,55,0.07)", clip: "polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%)",  gold: true  },
+              { icon: <Trophy size={20} />,   label: "Winner Announcement", phase: "Phase 04", note: "Results & ceremony",         desc: "Top teams announced and prizes awarded live.",         color: "#8FA396", bg: "rgba(143,163,150,0.05)", clip: "polygon(24px 0, 100% 0, 100% 100%, 0 100%, 0 24px)",               gold: false },
+            ].map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="relative z-10 flex-1 flex md:block items-start gap-6 pl-20 md:pl-0"
+                initial={{ opacity: 0, x: -24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                className="relative flex gap-6 md:gap-8 items-start group"
               >
-                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center mb-0 md:mb-8 flex-shrink-0 absolute md:relative left-0 md:left-auto"
-                  style={{ background: index === 0 ? "#38EF7D" : "#0D1611", border: "1px solid rgba(56,239,125,0.4)", boxShadow: index === 0 ? "0 0 24px rgba(56,239,125,0.4)" : "none" }}>
-                  <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: "12px", fontWeight: 600, color: index === 0 ? "#0D1611" : "#38EF7D" }}>{item.phase}</span>
+
+                {/* icon circle */}
+                <div
+                  className="relative z-10 flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center"
+                  style={{
+                    background: item.gold ? item.color : "#0D1611",
+                    border: `1px solid ${item.color}70`,
+                    boxShadow: `0 0 ${item.gold ? "28px" : "14px"} ${item.color}${item.gold ? "55" : "25"}`,
+                    color: item.gold ? "#0D1611" : item.color,
+                  }}
+                >
+                  {item.icon}
                 </div>
-                <div>
-                  <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "17px", fontWeight: 600, color: "#E2EFE7", marginBottom: "6px" }}>{item.label}</h3>
-                  <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: "12px", color: "#8FA396" }}>{item.note}</p>
+
+                {/* cut-corner card */}
+                <div
+                  className="flex-1 relative p-6 md:p-8 transition-all duration-300"
+                  style={{
+                    background: item.bg,
+                    clipPath: item.clip,
+                    border: "none",
+                    outline: `1px solid ${item.color}25`,
+                    outlineOffset: "-1px",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "translateX(6px)";
+                    e.currentTarget.style.background = `${item.bg.replace("0.0", "0.1")}`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "translateX(0)";
+                    e.currentTarget.style.background = item.bg;
+                  }}
+                >
+                  {/* top accent line */}
+                  <div className="absolute top-0 left-0 right-6 h-[1px]" style={{ background: `linear-gradient(90deg, ${item.color}80, transparent)` }} />
+
+                  {/* phase label */}
+                  <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: "10px", letterSpacing: "0.25em", color: item.color, marginBottom: "10px", textTransform: "uppercase" }}>
+                    {item.phase} — {item.note}
+                  </p>
+
+                  {/* title */}
+                  <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "clamp(22px, 3vw, 30px)", color: "#E2EFE7", marginBottom: "8px", lineHeight: 1.1 }}>
+                    {item.label}
+                  </h3>
+
+                  {/* desc */}
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "14px", color: "#8FA396", lineHeight: 1.7 }}>
+                    {item.desc}
+                  </p>
+
+                  {/* cut corner accent dot */}
+                  <div className="absolute top-[20px] right-[4px] w-1.5 h-1.5 rounded-full" style={{ background: item.color, boxShadow: `0 0 6px ${item.color}` }} />
                 </div>
+
               </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* ── DELIVERABLES ─────────────────────────────────────── */}
       <section id="deliverables" className="py-20 md:py-28 px-4 md:px-6" style={{ background: "#0D1611" }}>
