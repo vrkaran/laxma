@@ -1,3 +1,4 @@
+import React from "react";
 import heroimg from '../image/ambassador/heroimg.jpg'
 import { useRef, useEffect, useState, type ReactNode } from "react";
 import { motion, useInView, animate, type Variants } from "framer-motion";
@@ -23,6 +24,11 @@ import {
   ArrowRight,
   type LucideIcon,
 } from "lucide-react";
+
+import roleImg1 from "../image/ambassador/role1.jpg";
+import roleImg3 from "../image/ambassador/role3.jpg";
+import roleImg4 from "../image/ambassador/role4.jpg";
+import roleImg5 from "../image/ambassador/role5.jpg";
 
 /* =========================================================
    DESIGN TOKENS — light pastel teal / mint system.
@@ -211,7 +217,7 @@ function TimelineItem({ icon: Icon, title, desc, isLast = false }: TimelineItemP
       )}
       <div
         className="relative z-10 w-14 h-14 rounded-full flex items-center justify-center shrink-0"
-        style={{ background: TEAL.ink, boxShadow: `0 0 24px ${TEAL.glow}` }}
+        style={{ background: "rgba(0,230,163,0.12)", boxShadow: `0 0 24px ${TEAL.glow}` }}
       >
         <Icon size={22} color={TEAL.accent} />
       </div>
@@ -702,25 +708,157 @@ function Ambassador() {
         </section>
 
         {/* ============ RESPONSIBILITIES — TIMELINE ============ */}
-        <section className="relative py-32 px-6" style={{ background: TEAL.bgTint }}>
+        <section
+          className="relative py-32 px-6 overflow-hidden"
+          style={{
+            background:
+              "linear-gradient(180deg, #F4FBF9 0%, #EEF8F5 100%)",
+          }}
+        >
+          <GlowOrb
+            className="bottom-0 right-0"
+            color="rgba(0,230,163,0.05)"
+            size={700}
+          />
+
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="relative z-10 max-w-3xl mx-auto"
+            className="relative z-10 max-w-7xl mx-auto"
           >
-            <Eyebrow>What You'll Do</Eyebrow>
-            <motion.h2
-              variants={fadeUp}
-              className="mb-20"
-              style={{ fontFamily: "'DM Serif Display', serif", fontWeight: 800, fontSize: "clamp(36px,4.5vw,56px)", lineHeight: 1, color: TEAL.ink }}
+            {/* 02 */}
+            <span
+              style={{
+                position: "absolute",
+                top: "-120px",
+                left: "-20px",
+                fontSize: "220px",
+                fontWeight: 700,
+                color: TEAL.accentDeep,
+                opacity: 0.15,
+                lineHeight: 1,
+                pointerEvents: "none",
+                fontFamily: "'Space Grotesk', sans-serif",
+              }}
             >
-              Your role on campus.
-            </motion.h2>
-            {RESPONSIBILITIES.map((item) => (
-              <TimelineItem key={item.title} {...item} />
-            ))}
+              02
+            </span>
+
+            <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-24 items-start">
+
+              {/* LEFT SIDE */}
+              <div>
+                <motion.h2
+                  variants={fadeUp}
+                  className="mt-4 mb-16"
+                  style={{
+                    fontFamily: "'DM Serif Display', serif",
+                    fontWeight: 400,
+                    fontSize: "clamp(42px,5vw,64px)",
+                    lineHeight: 0.95,
+                    color: TEAL.ink,
+                  }}
+                >
+                  Your role on campus.
+                </motion.h2>
+
+                {RESPONSIBILITIES.map((item) => (
+                  <TimelineItem key={item.title} {...item} />
+                ))}
+              </div>
+
+              {/* RIGHT SIDE */}
+              <div className="sticky top-32">
+
+                <div className="grid grid-cols-2 gap-8">
+
+                  {/* TOP SMALL */}
+                  <motion.div
+                    whileHover={{ scale: 1.05, y: -6 }}
+                    className="col-span-2 flex justify-center mt-8"
+                  >
+                   <div className="relative overflow-hidden rounded-[32px] w-[320px] h-[150px] mt-12">
+                      <img
+                        src={roleImg1}
+                        alt=""
+                        className="w-full h-full object-cover"
+                      />
+                      <div
+                        className="absolute inset-0"
+                        style={{
+                          background:
+                            "linear-gradient(135deg, rgba(34,104,107,0.18), rgba(49,139,151,0.08))",
+                        }}
+                      />
+                    </div>
+                  </motion.div>
+
+                  {/* BOTTOM LEFT */}
+                  <motion.div
+                    whileHover={{ scale: 1.04, y: -8 }}
+                  >
+                    <div className="relative overflow-hidden rounded-[32px] h-[220px] mt-12">
+                      <img
+                        src={roleImg3}
+                        alt=""
+                        className="w-full h-full object-cover"
+                      />
+                      <div
+                        className="absolute inset-0"
+                        style={{
+                          background:
+                            "linear-gradient(135deg, rgba(34,104,107,0.18), rgba(49,139,151,0.08))",
+                        }}
+                      />
+                    </div>
+                  </motion.div>
+
+                  {/* BOTTOM RIGHT */}
+                  <motion.div
+                    whileHover={{ scale: 1.04, y: -8 }}
+                  >
+                    <div className="relative overflow-hidden rounded-[32px] h-[220px] mt-12">
+                      <img
+                        src={roleImg4}
+                        alt=""
+                        className="w-full h-full object-cover"
+                      />
+                      <div
+                        className="absolute inset-0"
+                        style={{
+                          background:
+                            "linear-gradient(135deg, rgba(34,104,107,0.18), rgba(49,139,151,0.08))",
+                        }}
+                      />
+                    </div>
+                  </motion.div>
+
+                  {/* BOTTOM SMALL */}
+                  <motion.div
+                    whileHover={{ scale: 1.05, y: -6 }}
+                    className="col-span-2 flex justify-center"
+                  >
+                    <div className="relative overflow-hidden rounded-[32px] w-[320px] h-[170px] mt-12">
+                      <img
+                        src={roleImg5}
+                        alt=""
+                        className="w-full h-full object-cover"
+                      />
+                      <div
+                        className="absolute inset-0"
+                        style={{
+                          background:
+                            "linear-gradient(135deg, rgba(34,104,107,0.18), rgba(49,139,151,0.08))",
+                        }}
+                      />
+                    </div>
+                  </motion.div>
+
+                </div>
+              </div>
+            </div>
           </motion.div>
         </section>
 
@@ -734,7 +872,23 @@ function Ambassador() {
             viewport={{ once: true }}
             className="relative z-10 max-w-5xl mx-auto"
           >
-            <Eyebrow center>Who Can Apply</Eyebrow>
+                          <span
+                style={{
+                  position: "absolute",
+                  left: "50%",
+                  top: "-120px",
+                  transform: "translateX(-50%)",
+                  fontSize: "220px",
+                  fontWeight: 700,
+                  color: TEAL.accentDeep,
+                  opacity: 0.15,
+                  lineHeight: 1,
+                  pointerEvents: "none",
+                  fontFamily: "'Space Grotesk', sans-serif",
+                }}
+              >
+                03
+              </span>
             <motion.h2
               variants={fadeUp}
               className="text-center mb-16"
@@ -742,10 +896,156 @@ function Ambassador() {
             >
               Check if you qualify.
             </motion.h2>
-            <div className="grid sm:grid-cols-2 gap-6">
-              {ELIGIBILITY.map((item) => (
-                <CheckItem key={item.title} {...item} />
-              ))}
+            <div className="grid lg:grid-cols-3 gap-6">
+
+              {/* LARGE CARD */}
+              <motion.div
+                variants={fadeUp}
+                whileHover={{
+                  y: -8,
+                  scale: 1.01,
+                }}
+                className="lg:col-span-2 rounded-[32px] p-8"
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(255,255,255,0.92), rgba(248,252,251,0.78))",
+                  border: "1px solid rgba(49,139,151,0.18)",
+                  backdropFilter: "blur(12px)",
+                  boxShadow: "0 20px 40px rgba(34,104,107,0.06)",
+                  borderLeft: "3px solid #318B97",
+                }}
+              >
+                <div
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
+                  style={{ background: "rgba(0,230,163,0.10)" }}
+                >
+                  {React.createElement(ELIGIBILITY[0].icon, { size: 26, color: TEAL.ink })}
+                </div>
+
+                <h3
+                  style={{
+                    fontFamily: "'DM Serif Display', serif",
+                    fontSize: "36px",
+                    color: TEAL.ink,
+                  }}
+                >
+                  {ELIGIBILITY[0].title}
+                </h3>
+
+                <p
+                  className="mt-4 max-w-2xl"
+                  style={{
+                    color: TEAL.inkSoft,
+                    fontSize: "18px",
+                    lineHeight: 1.8,
+                  }}
+                >
+                  {ELIGIBILITY[0].desc}
+                </p>
+              </motion.div>
+
+              {/* SMALL CARD */}
+              <motion.div
+                variants={fadeUp}
+                whileHover={{ y: -6 }}
+                className="rounded-[32px] p-8"
+                style={{
+                  background: "rgba(255,255,255,0.82)",
+                  border: "1px solid rgba(34,104,107,0.08)",
+                  backdropFilter: "blur(12px)",
+                  boxShadow: "0 16px 40px rgba(34,104,107,0.06)",
+                  borderTop: "3px solid #318B97",
+                }}
+              >
+                <div
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
+                  style={{ background: "rgba(0,230,163,0.10)" }}
+                >
+                  {React.createElement(ELIGIBILITY[1].icon, { size: 24, color: TEAL.ink })}
+                </div>
+
+                <h3
+                  style={{
+                    fontFamily: "'DM Serif Display', serif",
+                    fontSize: "28px",
+                    color: TEAL.ink,
+                  }}
+                >
+                  {ELIGIBILITY[1].title}
+                </h3>
+
+                <p
+                  className="mt-3"
+                  style={{
+                    color: TEAL.inkSoft,
+                    lineHeight: 1.8,
+                  }}
+                >
+                  {ELIGIBILITY[1].desc}
+                </p>
+              </motion.div>
+
+              {/* BOTTOM CARDS */}
+              {ELIGIBILITY.slice(2).map((item, index) => {
+
+                const accentBorders = [
+                  "#318B97", // teal
+                  "#00E6A3", // mint
+                  "#8FAAA6", // sage
+                ];
+
+                return (
+                  <motion.div
+                    key={item.title}
+                    variants={fadeUp}
+                    whileHover={{
+                      y: -8,
+                      scale: 1.01,
+                    }}
+                    className="rounded-[32px] p-8 transition-all"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, rgba(255,255,255,0.92), rgba(248,252,251,0.78))",
+                      border: "1px solid rgba(49,139,151,0.18)",
+                      borderBottom: `3px solid ${accentBorders[index]}`,
+                      backdropFilter: "blur(12px)",
+                      boxShadow: "0 20px 40px rgba(34,104,107,0.06)",
+                    }}
+                  >
+                    <div
+                      className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
+                      style={{
+                        background: `${accentBorders[index]}15`,
+                      }}
+                    >
+                      {React.createElement(item.icon, {
+                        size: 24,
+                        color: accentBorders[index],
+                      })}
+                    </div>
+
+                    <h3
+                      style={{
+                        fontFamily: "'DM Serif Display', serif",
+                        fontSize: "28px",
+                        color: TEAL.ink,
+                      }}
+                    >
+                      {item.title}
+                    </h3>
+
+                    <p
+                      className="mt-3"
+                      style={{
+                        color: TEAL.inkSoft,
+                        lineHeight: 1.8,
+                      }}
+                    >
+                      {item.desc}
+                    </p>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         </section>
