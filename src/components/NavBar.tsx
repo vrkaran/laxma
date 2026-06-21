@@ -111,7 +111,7 @@ export default function NavBar() {
             {location.pathname !== "/hackathon" && (
               <a
                 href="/hackathon"
-                className="block w-full bg-[#1f3d32] text-white overflow-hidden whitespace-nowrap py-3 border-b border-white/10"
+                className="block w-full bg-[#318B97] text-white overflow-hidden whitespace-nowrap py-3 border-b border-white/10"
               >
                 <div className="animate-marquee inline-block text-sm font-medium tracking-wide">
 

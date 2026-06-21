@@ -69,6 +69,7 @@ import FattyLiver from './pages/diseases/FattyLiver';
 import WomenCare from './pages/diseases/WomenCare';
 import Thyroid from './pages/diseases/thyroid';
 import Hackathon from './pages/hackathon';
+import Ambassador from './pages/Ambassador'
 
 function App() {
   return (
@@ -141,6 +142,7 @@ function App() {
         <Route path="/terms" element={<PageTransition><Terms /></PageTransition>} />
         <Route path="/cookies" element={<PageTransition><CookiePolicy /></PageTransition>} />
         <Route path="/hackathon" element={<Hackathon />} />
+        <Route path="/ambassador" element={<Ambassador />} />
       </Routes>
       <Footer />
     </div>
