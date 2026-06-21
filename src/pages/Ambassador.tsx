@@ -1,7 +1,7 @@
 import React from "react";
 import heroimg from '../image/ambassador/heroimg.jpg'
 import { useRef, useEffect, useState, type ReactNode } from "react";
-import { motion, useInView, animate, type Variants } from "framer-motion";
+import { motion, useInView, animate, type Variants, AnimatePresence } from "framer-motion";
 import {
   Rocket,
   Users,
@@ -163,47 +163,7 @@ function IconBadge({ icon: Icon, highlight = false }: IconBadgeProps) {
   );
 }
 
-// Checklist card for the Eligibility section.
-function CheckItem({ icon: Icon, title, desc }: CheckItemProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
-  return (
-    <motion.div
-      ref={ref}
-      variants={fadeUp}
-      whileHover={{ y: -6 }}
-      transition={{ duration: 0.3 }}
-      className="relative rounded-[24px] p-7"
-      style={{
-        background: "rgba(255,255,255,0.85)",
-        border: "1px solid rgba(11,61,58,0.08)",
-        backdropFilter: "blur(12px)",
-      }}
-    >
-      <div className="flex items-start gap-4">
-        <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(11,61,58,0.06)" }}>
-          <Icon size={20} color={TEAL.ink} />
-        </div>
-        <div className="flex-1">
-          <h4 style={{ fontFamily: "'DM Serif Display', serif", fontWeight: 700, fontSize: "19px", color: TEAL.ink }}>
-            {title}
-          </h4>
-          <p className="mt-2 text-[15px] leading-relaxed" style={{ color: TEAL.inkSoft }}>
-            {desc}
-          </p>
-        </div>
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={isInView ? { scale: 1 } : { scale: 0 }}
-          transition={{ delay: 0.3, type: "spring", stiffness: 300 }}
-          className="shrink-0"
-        >
-          <CheckCircle2 size={22} color={TEAL.accent} />
-        </motion.div>
-      </div>
-    </motion.div>
-  );
-}
+
 
 // Vertical connected-flow item for the Responsibilities timeline.
 function TimelineItem({ icon: Icon, title, desc, isLast = false }: TimelineItemProps) {
@@ -260,12 +220,12 @@ const ELIGIBILITY = [
 ];
 
 const PERKS = [
-  { icon: FileCheck, title: "Certificates", desc: "Official recognition for every milestone you complete." },
-  { icon: Network, title: "Networking", desc: "Direct access to founders, mentors and fellow ambassadors." },
-  { icon: Flag, title: "Leadership Experience", desc: "Lead a real chapter with real responsibility." },
-  { icon: Briefcase, title: "Internship Opportunities", desc: "Priority consideration for roles at AyurGenX." },
-  { icon: Rocket, title: "Startup Exposure", desc: "See how an early-stage healthtech company actually runs." },
-  { icon: Award, title: "Recognition", desc: "Top ambassadors are featured and rewarded each season." },
+  { icon: FileCheck, title: "Verified Achievement Certificates", desc: "Official recognition for every milestone you complete." , wheelLable : "Certificates"},
+  { icon: Network, title: "Founder & Industry Networking", desc: "Direct access to founders, mentors and fellow ambassadors.", wheelLable : "Networking" },
+  { icon: Flag, title: "Real Leadership Experience", desc: "Lead a real chapter with real responsibility.", wheelLable : "Leadership" },
+  { icon: Briefcase, title: "Exclusive Internship Opportunities", desc: "Priority consideration for roles at AyurGenX.", wheelLable : "Internship" },
+  { icon: Rocket, title: "Startup Ecosystem Exposure", desc: "See how an early-stage healthtech company actually runs.", wheelLable : "Startup" },
+  { icon: Award, title: "Recognition & Personal Branding", desc: "Top ambassadors are featured and rewarded each season.", wheelLable : "Recognition" },
 ];
 
 const APPLICATION_STEPS = [
@@ -284,6 +244,10 @@ const APPLICATION_STEPS = [
    here — change it if you want the whole page light, no exceptions.
 ========================================================= */
 function Ambassador() {
+      const [activePerk, setActivePerk] = useState(0);
+      const handleNextPerk = () => {
+        setActivePerk((prev) => (prev + 1) % PERKS.length);
+      };
   return (
     <>
       <main className="overflow-hidden" style={{ fontFamily: "'Space Grotesk', sans-serif", color: TEAL.ink, background: TEAL.bg }}>
@@ -1060,7 +1024,23 @@ function Ambassador() {
             viewport={{ once: true }}
             className="relative z-10 max-w-7xl mx-auto"
           >
-            <Eyebrow center>What You Get</Eyebrow>
+                                      <span
+                style={{
+                  position: "absolute",
+                  left: "50%",
+                  top: "-120px",
+                  transform: "translateX(-50%)",
+                  fontSize: "220px",
+                  fontWeight: 700,
+                  color: TEAL.accentDeep,
+                  opacity: 0.15,
+                  lineHeight: 1,
+                  pointerEvents: "none",
+                  fontFamily: "'Space Grotesk', sans-serif",
+                }}
+              >
+                04
+              </span>
             <motion.h2
               variants={fadeUp}
               className="text-center mb-16"
@@ -1068,20 +1048,167 @@ function Ambassador() {
             >
               Perks worth the effort.
             </motion.h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {PERKS.map((perk) => (
-                <GlassCard key={perk.title}>
-                  <IconBadge icon={perk.icon} />
-                  <h4 style={{ fontFamily: "'DM Serif Display', serif", fontWeight: 700, fontSize: "20px", color: TEAL.ink }}>{perk.title}</h4>
-                  <p className="mt-3 text-[15px] leading-relaxed" style={{ color: TEAL.inkSoft }}>{perk.desc}</p>
-                </GlassCard>
-              ))}
+            <div className="grid lg:grid-cols-[40%_60%] items-center gap-12 mt-20">
+              {/* WHEEL */}
+              <div className="relative flex items-center justify-center h-[500px]">
+
+                <div
+                  className="absolute w-[340px] h-[340px] rounded-full"
+                  style={{
+                    border: `2px solid rgba(49,139,151,0.12)`,
+                  }}
+                />
+
+                {PERKS.map((perk, i) => {
+                  const angle = (360 / PERKS.length) * i;
+                  const radius = 170;
+                  const isActive = i === activePerk;
+
+                  const x = Math.cos((angle - 90) * Math.PI / 180) * radius;
+                  const y = Math.sin((angle - 90) * Math.PI / 180) * radius;
+
+                  return (
+                    <motion.button
+                      key={perk.title}
+                      onClick={() => setActivePerk(i)}
+                      className="absolute"
+                      style={{
+                        left: "50%",
+                        top: "50%",
+                        transform: `translate(${x}px, ${y}px) translate(-50%, -50%)`,
+                      }}
+                    >
+                      <div
+                        className="px-5 py-3 rounded-full flex items-center gap-2"
+                        style={{
+                          background: isActive
+                            ? `linear-gradient(135deg, ${TEAL.accent}, ${TEAL.accentDeep})`
+                            : "rgba(255,255,255,0.85)",
+
+                          color: isActive ? "white" : TEAL.ink,
+
+                          boxShadow: isActive
+                          ? "0 0 40px rgba(68,155,133,0.35)"
+                          : "0 10px 20px rgba(0,0,0,0.05)"
+                        }}
+                      >
+                        <span>{perk.wheelLable}</span>
+                      </div>
+                    </motion.button>
+                  );
+                })}
+
+                {/* CENTER */}
+                <div
+                  className="absolute w-[140px] h-[140px] rounded-full flex items-center justify-center"
+                  style={{
+                    background: "white",
+                    boxShadow: "0 25px 60px rgba(34,104,107,0.12)",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "'IBM Plex Mono', monospace",
+                      letterSpacing: "0.15em",
+                      color: TEAL.ink,
+                    }}
+                  >
+                    AYURGENX
+                  </span>
+                </div>
+
+              </div>
+
+              {/* ACTIVE CONTENT */}
+
+              <div className="relative min-h-[320px] flex items-center">
+
+                <AnimatePresence mode="wait">
+
+                  <motion.div
+                    key={PERKS[activePerk].title}
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -40 }}
+                    transition={{ duration: 0.45 }}
+                    className="w-full"
+                  >
+
+                    <div
+                      className="mb-6"
+                      style={{
+                        color: TEAL.accentDeep,
+                        fontSize: "14px",
+                        fontWeight: 600,
+                        letterSpacing: "0.25em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      0{activePerk + 1} / 06
+                    </div>
+                        
+                    <h3
+                      style={{
+                        fontFamily: "'DM Serif Display', serif",
+                        fontSize: "clamp(48px,4vw,72px)",
+                        lineHeight: 0.95,
+                        color: TEAL.ink,
+                      }}
+                    >
+                      {PERKS[activePerk].title}
+                    </h3>
+
+                    <p
+                      className="mt-8"
+                      style={{
+                        color: TEAL.inkSoft,
+                        fontSize: "20px",
+                        lineHeight: 1.9,
+                        maxWidth: "520px",
+                      }}
+                    >
+                      {PERKS[activePerk].desc}
+                    </p>
+                    <motion.button
+                    onClick={handleNextPerk}
+                    whileHover={{ x: 6 }}
+                    whileTap={{ scale: 0.96 }}
+                    className="mt-10 flex items-center gap-3"
+                    style={{
+                      color: TEAL.accentDeep,
+                      fontWeight: 600,
+                      fontSize: "18px",
+                    }}
+                  >
+                    {activePerk === PERKS.length - 1
+                      ? "Back To Start"
+                      : "Next Perk"}
+
+                    <motion.div
+                    animate={{
+                      x: [0, 6, 0],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                    }}
+                  >
+                    <ArrowRight size={20} />
+                  </motion.div>
+                  </motion.button>
+                  </motion.div>
+
+                </AnimatePresence>
+
+              </div>
+
             </div>
           </motion.div>
         </section>
 
         {/* ============ APPLICATION PROCESS — STEPPER ============ */}
         <section className="relative py-32 px-6" style={{ background: TEAL.bg }}>
+          <GlowOrb className="top-[-100px] right-[-100px]" size={500} />
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -1089,32 +1216,80 @@ function Ambassador() {
             viewport={{ once: true }}
             className="relative z-10 max-w-6xl mx-auto"
           >
-            <Eyebrow center>How It Works</Eyebrow>
+              <span
+                style={{
+                  position: "absolute",
+                  left: "10%",
+                  top: "-120px",
+                  transform: "translateX(-50%)",
+                  fontSize: "220px",
+                  fontWeight: 700,
+                  color: TEAL.accentDeep,
+                  opacity: 0.15,
+                  lineHeight: 1,
+                  pointerEvents: "none",
+                  fontFamily: "'Space Grotesk', sans-serif",
+                }}
+              >
+                05
+              </span>
             <motion.h2
               variants={fadeUp}
-              className="text-center mb-20"
+              className="text-left mb-20"
               style={{ fontFamily: "'DM Serif Display', serif", fontWeight: 800, fontSize: "clamp(36px,4.5vw,56px)", color: TEAL.ink }}
             >
               Four steps to get started.
             </motion.h2>
             <div className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-6">
-              <div
-                className="hidden lg:block absolute top-7 left-0 right-0 h-[2px]"
-                style={{ background: "linear-gradient(90deg, rgba(0,230,163,0.05), rgba(0,230,163,0.5), rgba(0,230,163,0.05))" }}
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2 }}
+                className="hidden lg:block absolute top-10 left-0 right-0 h-[2px] origin-left"
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(68,155,133,0.08), rgba(68,155,133,0.45), rgba(68,155,133,0.08))",
+                }}
               />
               {APPLICATION_STEPS.map((step, i) => (
-                <motion.div key={step.title} variants={fadeUp} className="relative">
+               <motion.div
+                key={step.title}
+                variants={fadeUp}
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.25 }}
+                className="relative"
+              >
                   <div
-                    className="relative z-10 w-14 h-14 rounded-full flex items-center justify-center mb-6"
-                    style={{ background: TEAL.ink, boxShadow: `0 0 24px ${TEAL.glow}` }}
+                    className="relative z-10 w-20 h-20 rounded-full flex items-center justify-center mb-8"
+                    style={{
+                    background:
+                      "linear-gradient(to bottom, rgba(68,155,133,0.28), rgba(68,155,133,0.05))",
+                    boxShadow:
+                      "0 0 35px rgba(68,155,133,0.18), 0 10px 30px rgba(68,155,133,0.10)",
+                  }}
                   >
-                    <step.icon size={22} color={TEAL.accent} />
+                    <motion.div
+                        animate={{
+                          scale: [1, 1.12, 1],
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          delay: i * 0.4,
+                        }}
+                        className="absolute inset-0 rounded-full"
+                        style={{
+                          border: "1px solid rgba(68,155,133,0.22)",
+                        }}
+                      />
+                      <step.icon size={28} color={TEAL.ink} />
                   </div>
                   <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: "12px", letterSpacing: "0.16em", color: TEAL.accentDeep }}>
                     STEP 0{i + 1}
                   </p>
-                  <h4 className="mt-2" style={{ fontFamily: "'DM Serif Display', serif", fontWeight: 700, fontSize: "22px", color: TEAL.ink }}>{step.title}</h4>
-                  <p className="mt-3 text-[15px] leading-relaxed" style={{ color: TEAL.inkSoft }}>{step.desc}</p>
+                  <h4 className="mt-2" style={{ fontFamily: "'DM Serif Display', serif", fontWeight: 700, fontSize: "26px", color: TEAL.ink }}>{step.title}</h4>
+                  <p className="mt-4 text-[16px] leading-relaxed" style={{ color: TEAL.inkSoft }}>{step.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -1125,68 +1300,185 @@ function Ambassador() {
             Intentional exception to "light everywhere": uses TEAL.ink
             as a background for contrast. Swap to TEAL.bgTint below if
             you want zero dark sections on the page. */}
-        <section className="relative py-40 px-6 overflow-hidden" style={{ background: TEAL.ink }}>
-          <GlowOrb className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" size={800} color="rgba(0,230,163,0.2)" />
+<section
+  className="relative py-44 px-6 overflow-hidden"
+  style={{
+    background: `linear-gradient(180deg, ${TEAL.ink} 0%, #0B3437 100%)`,
+  }}
+>
+  {/* BACKGROUND GLOW */}
+  <GlowOrb
+    className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    size={900}
+    color="rgba(68,155,133,0.18)"
+  />
 
-          {[
-            { top: "15%", left: "10%", d: 7 }, { top: "70%", left: "18%", d: 9 },
-            { top: "25%", left: "85%", d: 8 }, { top: "80%", left: "78%", d: 6 },
-            { top: "45%", left: "5%", d: 10 }, { top: "10%", left: "55%", d: 7.5 },
-          ].map((p, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-2 h-2 rounded-full"
-              style={{ top: p.top, left: p.left, background: TEAL.accent, opacity: 0.5 }}
-              animate={{ y: [0, -24, 0], opacity: [0.2, 0.7, 0.2] }}
-              transition={{ duration: p.d, repeat: Infinity, ease: [0.42, 0, 0.58, 1] }}
-            />
-          ))}
+  {/* BIG WATERMARK */}
+  <span
+    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+    style={{
+      fontSize: "320px",
+      fontWeight: 800,
+      color: "white",
+      opacity: 0.04,
+      lineHeight: 1,
+      pointerEvents: "none",
+      fontFamily: "'Space Grotesk', sans-serif",
+    }}
+  >
+    2026
+  </span>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="relative z-10 max-w-3xl mx-auto text-center"
-          >
-            <motion.h2
-              variants={fadeUp}
-              style={{ fontFamily: "'DM Serif Display', serif", fontWeight: 800, fontSize: "clamp(40px,6vw,72px)", lineHeight: 1, color: "#FFFFFF" }}
-            >
-              Ready To Build
-              <span
-                className="block"
-                style={{
-                  background: `linear-gradient(135deg, ${TEAL.accent}, ${TEAL.accentDeep})`,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                Your Legacy?
-              </span>
-            </motion.h2>
-            <motion.p variants={fadeUp} className="mt-8 max-w-xl mx-auto" style={{ fontSize: "18px", lineHeight: 1.8, color: "rgba(255,255,255,0.7)" }}>
-              Join the ambassadors shaping how India's campuses experience innovation,
-              wellness and entrepreneurship.
-            </motion.p>
-            <motion.div variants={fadeUp} className="mt-12">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-3 px-10 py-5 rounded-full"
-                style={{
-                  background: `linear-gradient(135deg, ${TEAL.accent}, ${TEAL.accentDeep})`,
-                  boxShadow: `0 0 40px ${TEAL.glow}`,
-                  color: "#FFFFFF",
-                  fontWeight: 700,
-                  fontSize: "17px",
-                }}
-              >
-                Apply Now <ArrowRight size={18} />
-              </motion.button>
-            </motion.div>
-          </motion.div>
-        </section>
+  {/* FLOATING DOTS */}
+  {[
+    { top: "15%", left: "10%", d: 7 },
+    { top: "70%", left: "18%", d: 9 },
+    { top: "25%", left: "85%", d: 8 },
+    { top: "80%", left: "78%", d: 6 },
+    { top: "45%", left: "5%", d: 10 },
+    { top: "10%", left: "55%", d: 7.5 },
+  ].map((p, i) => (
+    <motion.div
+      key={i}
+      className="absolute w-2 h-2 rounded-full"
+      style={{
+        top: p.top,
+        left: p.left,
+        background: TEAL.accent,
+        opacity: 0.4,
+      }}
+      animate={{
+        y: [0, -25, 0],
+        opacity: [0.2, 0.8, 0.2],
+      }}
+      transition={{
+        duration: p.d,
+        repeat: Infinity,
+      }}
+    />
+  ))}
+
+  <motion.div
+    variants={staggerContainer}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true }}
+    className="relative z-10 max-w-4xl mx-auto text-center"
+  >
+
+    {/* BADGE */}
+    <motion.div
+      variants={fadeUp}
+      className="inline-flex items-center gap-3 px-6 py-3 rounded-full mb-10"
+      style={{
+        background: "rgba(255,255,255,0.08)",
+        border: "1px solid rgba(255,255,255,0.12)",
+        backdropFilter: "blur(10px)",
+      }}
+    >
+      <Sparkles size={14} color="#FFFFFF" />
+      <span
+        style={{
+          fontFamily: "'IBM Plex Mono', monospace",
+          letterSpacing: "0.12em",
+          fontSize: "12px",
+          color: "#FFFFFF",
+        }}
+      >
+        APPLICATIONS OPEN NOW
+      </span>
+    </motion.div>
+
+    {/* HEADING */}
+    <motion.h2
+      variants={fadeUp}
+      style={{
+        fontFamily: "'DM Serif Display', serif",
+        fontWeight: 800,
+        fontSize: "clamp(52px,7vw,92px)",
+        lineHeight: 0.95,
+        color: "#FFFFFF",
+      }}
+    >
+      Your Campus Needs
+      <span
+        className="block"
+        style={{
+          background: `linear-gradient(135deg, ${TEAL.accent}, #97D8C4)`,
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }}
+      >
+        A Leader.
+      </span>
+    </motion.h2>
+
+    {/* DESCRIPTION */}
+    <motion.p
+      variants={fadeUp}
+      className="mt-10 max-w-2xl mx-auto"
+      style={{
+        fontSize: "20px",
+        lineHeight: 1.9,
+        color: "rgba(255,255,255,0.75)",
+      }}
+    >
+      Step forward. Build communities, launch initiatives,
+      connect with founders and create an impact that lasts
+      long after graduation.
+    </motion.p>
+
+    {/* BUTTON */}
+    <motion.div variants={fadeUp} className="mt-14">
+      <motion.button
+        whileHover={{
+          scale: 1.05,
+          y: -3,
+        }}
+        whileTap={{
+          scale: 0.98,
+        }}
+        className="inline-flex items-center gap-3 px-10 py-5 rounded-full"
+        style={{
+          background: `linear-gradient(135deg, ${TEAL.accent}, ${TEAL.accentDeep})`,
+          boxShadow: "0 0 60px rgba(68,155,133,0.35)",
+          color: "#FFFFFF",
+          fontWeight: 700,
+          fontSize: "18px",
+        }}
+      >
+        Apply Now
+        <ArrowRight size={20} />
+      </motion.button>
+    </motion.div>
+
+    {/* STATS */}
+    <motion.div
+      variants={fadeUp}
+      className="flex flex-wrap justify-center gap-8 mt-14"
+    >
+      {[
+        "500+ Ambassadors",
+        "100+ Campuses",
+        "50+ Events",
+        "4.9★ Rating",
+      ].map((item) => (
+        <div
+          key={item}
+          style={{
+            color: "rgba(255,255,255,0.7)",
+            fontFamily: "'IBM Plex Mono', monospace",
+            letterSpacing: "0.08em",
+            fontSize: "13px",
+          }}
+        >
+          {item}
+        </div>
+      ))}
+    </motion.div>
+
+  </motion.div>
+</section>
       </main>
     </>
   );
