@@ -142,10 +142,10 @@ export default function HealthBubbleGame() {
   // Generate bubbles with stable positions so layout feels consistent
   const bubbles: BubbleItem[] = useMemo(() => {
     // Spread bubbles horizontally and vertically; slow float with periodic fade
-    const xPositions = [8, 16, 25, 38, 52, 65, 78, 88];
-    const yPositions = [68, 30, 55, 20, 75, 42, 60, 28];
-    const sizes = [90, 96, 104, 92, 98, 94, 108, 88];
-    const durations = [18, 19, 20, 18.5, 19.5, 18.8, 20.2, 19.2];
+    const xPositions = [10, 88, 14, 84, 12, 86, 24, 76];
+    const yPositions = [15, 12, 42, 40, 82, 78, 62, 65];
+    const sizes = [78, 84, 88, 82, 86, 80, 90, 84];
+    const durations = [24, 26, 25, 28, 24, 27, 26, 25];
     const delays = [0, 0.6, 0.2, 1.0, 0.4, 1.2, 0.5, 0.9];
     const drifts = [14, 10, 16, 12, 18, 11, 15, 13];
 
@@ -277,7 +277,7 @@ export default function HealthBubbleGame() {
                 // Avoid central hero text area (safe zone): x 28–72%, y 22–64%
                 let x = b.xPercent;
                 let y = b.yPercent;
-                if (x >= 28 && x <= 72 && y >= 22 && y <= 64) {
+                if (x >= 22 && x <= 78 && y >= 15 && y <= 72) {
                   x = x < 50 ? 22 : 78;
                   y = y < 50 ? 18 : 68;
                 }
