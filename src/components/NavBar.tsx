@@ -1,9 +1,10 @@
 import { Menu, X } from 'lucide-react'; // Removed Heart icon from imports as it's no longer used
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logoImg from '../image/icon/logo.webp';
 
 export default function NavBar() {
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -107,21 +108,18 @@ export default function NavBar() {
         </div>
       )}
 
-    {/*Announcement Banner */}
-            {location.pathname !== "/hackathon" && (
-              <a
-                href="/hackathon"
-                className="block w-full bg-[#318B97] text-white overflow-hidden whitespace-nowrap py-3 border-b border-white/10"
-              >
-                <div className="animate-marquee inline-block text-sm font-medium tracking-wide">
-
-                  🚀 AyurGenX Hackathon 2026 Registrations Open Now •
-                  AI • Healthcare • Ayurveda • Women's Wellness •
-                  Student Wellness • Click Here to Explore •
-
-                </div>
-              </a>
-            )}
+              {/*Announcement Banner */}
+              {location.pathname !== "/ambassador" &&
+              location.pathname !== "/programs" && (
+                <Link
+                  to="/ambassador"
+                  className="block w-full bg-slate-900 text-white overflow-hidden whitespace-nowrap py-2 border-b border-white/5"
+                >
+                  <div className="animate-marquee inline-block text-xs font-medium tracking-wider opacity-90">
+                    🌱 Become an AyurGenX Campus Ambassador • Unlock Leadership, Networking & Internship Opportunities • Explore Now →
+                  </div>
+                </Link>
+              )}
     </nav>
   );
 }

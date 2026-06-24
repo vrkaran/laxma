@@ -91,7 +91,7 @@ export default function HeroSectionV2() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-light-gray pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-light-gray pt-20" style={{ fontFamily: "'Space Grotesk', sans-serif"}}>
       <GradientOrb size="large" color="blue" position={{ top: '-10%', right: '-5%' }} />
       <GradientOrb size="large" color="green" position={{ bottom: '-15%', left: '10%' }} />
       <GradientOrb size="medium" color="amber" position={{ top: '40%', left: '-10%' }} />
@@ -112,7 +112,7 @@ export default function HeroSectionV2() {
         </div>
 
         <div className="mb-10 min-h-32">
-          <h1 className="text-5xl md:text-7xl font-bold text-brand-gray leading-tight">
+         <h1 className="text-5xl md:text-7xl font-bold tracking-[-0.04em]">
             {typewriterText}
             <span className="animate-pulse text-vitality-teal">|</span>
           </h1>

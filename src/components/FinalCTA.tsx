@@ -8,7 +8,7 @@ const trustBadges = [
 
 export default function FinalCTA() {
   return (
-    <section className="py-24 bg-clinical-white">
+    <section className="py-24 bg-clinical-white" style={{ fontFamily: "'Space Grotesk', sans-serif"}}>
       <div className="max-w-5xl mx-auto px-6">
         <div className="relative overflow-hidden p-12 md:p-16 bg-gradient-to-br from-vitality-teal via-bio-tech-blue to-vitality-teal rounded-3xl shadow-2xl">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/20 via-transparent to-transparent"></div>
@@ -25,7 +25,7 @@ export default function FinalCTA() {
             </h2>
 
             <p className="text-xl md:text-2xl mb-10 opacity-90">
-              Your body will thank you — within the first 7 days.
+              Your body will thank you - within the first 7 days.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">

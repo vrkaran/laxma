@@ -87,6 +87,13 @@ export default function AyurGenXPremiumPage() {
                   Apply for Internship <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform"/>
                 </span>
               </Link>
+
+              <Link to="/ambassador" className="group relative px-10 py-5 bg-gradient-to-r from-vitality-teal to-[#020617] border border-emerald-500/30 text-emerald-100 font-bold text-lg rounded-full overflow-hidden transition-all hover:border-emerald-400/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.2)]">
+                <span className="relative z-10 flex items-center gap-3">
+                  Explore Campus Ambassador ↗
+                </span>
+              </Link>
+
               <Link to="/ayurgenx-philosophy" className="px-10 py-5 text-white font-bold text-lg border border-white/10 rounded-full hover:bg-white/5 transition-all backdrop-blur-sm">
                 Explore Philosophy
               </Link>
