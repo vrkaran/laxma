@@ -219,6 +219,24 @@ const ELIGIBILITY = [
   { icon: Calendar, title: "Time Commitment", desc: "Available for at least 6 months of active participation." },
 ];
 
+const COMMITMENT = [
+  {
+    icon: Calendar,
+    title: "2–4 Hours / Week",
+    desc: "A manageable weekly commitment that fits around your academic schedule.",
+  },
+  {
+    icon: Users,
+    title: "Monthly Meetups",
+    desc: "Connect with mentors, founders and fellow ambassadors every month.",
+  },
+  {
+    icon: GraduationCap,
+    title: "Student Friendly",
+    desc: "Designed to balance leadership experience with your college life.",
+  },
+];
+
 const PERKS = [
   { icon: FileCheck, title: "Verified Achievement Certificates", desc: "Official recognition for every milestone you complete." , wheelLable : "Certificates"},
   { icon: Network, title: "Founder & Industry Networking", desc: "Direct access to founders, mentors and fellow ambassadors.", wheelLable : "Networking" },
@@ -235,6 +253,49 @@ const APPLICATION_STEPS = [
   { icon: Compass, title: "Start Your Journey", desc: "Launch your first event and begin building your chapter." },
 ];
 
+const AMBASSADOR_LEVELS = [
+  {
+    level: "Level 1",
+    name: "Rising Ambassador",
+    target: "25 Community Joins",
+    rewards: [
+      "Campus Ambassador Certificate",
+      "AyurGenX Stickers",
+      "Community Recognition",
+    ],
+  },
+  {
+    level: "Level 2",
+    name: "Growth Ambassador",
+    target: "50 Community Joins",
+    rewards: [
+      "Certificate of Excellence",
+      "AyurGenX Merchandise",
+      "Priority Internship Consideration",
+    ],
+  },
+  {
+    level: "Level 3",
+    name: "Star Ambassador",
+    target: "100 Community Joins",
+    rewards: [
+      "Star Ambassador Certificate",
+      "Founder Interaction",
+      "Fast-track Internship Interview",
+    ],
+  },
+  {
+    level: "Level 4",
+    name: "Elite Ambassador",
+    target: "150+ Community Joins",
+    rewards: [
+      "Founder Mentorship",
+      "Guaranteed Internship Interview",
+      "Featured on LinkedIn",
+    ],
+  },
+];
+
 /* =========================================================
    PAGE
    Every section sits on the light teal field (TEAL.bg /
@@ -248,6 +309,7 @@ function Ambassador() {
       const handleNextPerk = () => {
         setActivePerk((prev) => (prev + 1) % PERKS.length);
       };
+      const [activeLevel, setActiveLevel] = useState(0);
   return (
     <>
       <main className="overflow-hidden" style={{ fontFamily: "'Space Grotesk', sans-serif", color: TEAL.ink, background: TEAL.bg }}>
@@ -1013,7 +1075,108 @@ function Ambassador() {
             </div>
           </motion.div>
         </section>
+        
 
+        {/* ============ PROGRAM COMMITMENT ============ */}
+
+        <section
+          className="relative py-28 px-6 overflow-hidden"
+          style={{ background: TEAL.bgTint }}
+        >
+          <GlowOrb
+            className="top-0 right-[-120px]"
+            size={500}
+            color="rgba(68,155,133,0.08)"
+          />
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="relative z-10 max-w-6xl mx-auto"
+          >
+
+              <span
+                style={{
+                  position: "absolute",
+                  left: "50%",
+                  top: "-120px",
+                  transform: "translateX(-50%)",
+                  fontSize: "220px",
+                  fontWeight: 700,
+                  color: TEAL.accentDeep,
+                  opacity: 0.15,
+                  lineHeight: 1,
+                  pointerEvents: "none",
+                  fontFamily: "'Space Grotesk', sans-serif",
+                }}
+              >
+                04
+              </span>
+
+            <motion.h2
+              variants={fadeUp}
+              className="text-center"
+              style={{
+                fontFamily: "'DM Serif Display', serif",
+                fontWeight: 700,
+                fontSize: "clamp(40px,5vw,60px)",
+                color: TEAL.ink,
+              }}
+            >
+              Program Commitment
+            </motion.h2>
+
+            <motion.p
+              variants={fadeUp}
+              className="text-center max-w-2xl mx-auto mt-6 mb-16"
+              style={{
+                color: TEAL.inkSoft,
+                fontSize: "18px",
+                lineHeight: 1.8,
+              }}
+            >
+              A flexible commitment designed to help you grow without affecting your academics.
+            </motion.p>
+
+            <div className="grid md:grid-cols-3 gap-8">
+
+              {COMMITMENT.map((item) => (
+
+                <GlassCard key={item.title}>
+
+                  <IconBadge icon={item.icon} highlight />
+
+                  <h3
+                    style={{
+                      fontFamily: "'DM Serif Display', serif",
+                      fontSize: "28px",
+                      color: TEAL.ink,
+                    }}
+                  >
+                    {item.title}
+                  </h3>
+
+                  <p
+                    className="mt-4"
+                    style={{
+                      color: TEAL.inkSoft,
+                      lineHeight: 1.8,
+                    }}
+                  >
+                    {item.desc}
+                  </p>
+
+                </GlassCard>
+
+              ))}
+
+            </div>
+
+          </motion.div>
+
+        </section>
         {/* ============ PERKS — BENTO ============ */}
         <section className="relative py-32 px-6 overflow-hidden" style={{ background: TEAL.bgTint }}>
           <GlowOrb className="top-0 left-[-100px]" size={550} />
@@ -1039,7 +1202,7 @@ function Ambassador() {
                   fontFamily: "'Space Grotesk', sans-serif",
                 }}
               >
-                04
+                05
               </span>
             <motion.h2
               variants={fadeUp}
@@ -1206,6 +1369,184 @@ function Ambassador() {
           </motion.div>
         </section>
 
+        <section
+          className="relative py-32 px-6 overflow-hidden"
+          style={{ background: TEAL.bg }}
+        >
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="max-w-7xl mx-auto"
+          >
+              <span
+                style={{
+                  position: "absolute",
+                  left: "50%",
+                  top: "-120px",
+                  transform: "translateX(-50%)",
+                  fontSize: "220px",
+                  fontWeight: 700,
+                  color: TEAL.accentDeep,
+                  opacity: 0.15,
+                  lineHeight: 2.2,
+                  pointerEvents: "none",
+                  fontFamily: "'Space Grotesk', sans-serif",
+                }}
+              >
+                06
+              </span>
+            <motion.h2
+              variants={fadeUp}
+              className="text-center"
+              style={{
+                fontFamily: "'DM Serif Display', serif",
+                fontSize: "clamp(42px,5vw,60px)",
+                color: TEAL.ink,
+              }}
+            >
+              Ambassador Journey
+            </motion.h2>
+
+            <motion.p
+              variants={fadeUp}
+              className="text-center max-w-2xl mx-auto mt-6"
+              style={{
+                color: TEAL.inkSoft,
+                fontSize: "18px",
+              }}
+            >
+              Every milestone unlocks new rewards and opportunities.
+            </motion.p>
+
+            <div className="grid lg:grid-cols-[38%_62%] gap-20 mt-20">
+
+              {/* LEFT */}
+
+              <div className="space-y-5">
+
+                {AMBASSADOR_LEVELS.map((item, i) => (
+
+                  <motion.button
+                    key={item.name}
+                    onClick={() => setActiveLevel(i)}
+                    whileHover={{ x: 8 }}
+                    className="w-full text-left rounded-[24px] p-6"
+                    style={{
+                      background:
+                        activeLevel === i
+                          ? `linear-gradient(135deg, ${TEAL.accent}, ${TEAL.accentDeep})`
+                          : "rgba(255,255,255,0.9)",
+
+                      color: activeLevel === i ? "white" : TEAL.ink,
+
+                      boxShadow:
+                        activeLevel === i
+                          ? "0 20px 40px rgba(68,155,133,0.25)"
+                          : "0 10px 25px rgba(34,104,107,0.06)",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: "13px",
+                        letterSpacing: "0.18em",
+                        textTransform: "uppercase",
+                        opacity: 0.8,
+                      }}
+                    >
+                      {item.level}
+                    </p>
+
+                    <h3
+                      className="mt-2"
+                      style={{
+                        fontFamily: "'DM Serif Display', serif",
+                        fontSize: "30px",
+                      }}
+                    >
+                      {item.name}
+                    </h3>
+
+                  </motion.button>
+
+                ))}
+
+              </div>
+
+              {/* RIGHT */}
+
+              <AnimatePresence mode="wait">
+
+                <motion.div
+                  key={AMBASSADOR_LEVELS[activeLevel].name}
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -30 }}
+                  transition={{ duration: 0.35 }}
+                >
+
+                  <div
+                    style={{
+                      color: TEAL.accentDeep,
+                      letterSpacing: "0.18em",
+                      fontSize: "13px",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Target
+                  </div>
+
+                  <h2
+                    className="mt-3"
+                    style={{
+                      fontFamily: "'DM Serif Display', serif",
+                      fontSize: "58px",
+                      color: TEAL.ink,
+                    }}
+                  >
+                    {AMBASSADOR_LEVELS[activeLevel].target}
+                  </h2>
+
+                  <div className="mt-10 space-y-5">
+
+                    {AMBASSADOR_LEVELS[activeLevel].rewards.map((reward) => (
+
+                      <div
+                        key={reward}
+                        className="flex gap-4 items-center"
+                      >
+                        <CheckCircle2
+                          size={22}
+                          color={TEAL.accent}
+                        />
+
+                        <span
+                          style={{
+                            fontSize: "20px",
+                            color: TEAL.inkSoft,
+                          }}
+                        >
+                          {reward}
+                        </span>
+
+                      </div>
+
+                    ))}
+
+                  </div>
+
+                </motion.div>
+
+              </AnimatePresence>
+
+            </div>
+
+          </motion.div>
+
+        </section>
+
+        
         {/* ============ APPLICATION PROCESS — STEPPER ============ */}
         <section className="relative py-32 px-6" style={{ background: TEAL.bg }}>
           <GlowOrb className="top-[-100px] right-[-100px]" size={500} />
@@ -1231,7 +1572,7 @@ function Ambassador() {
                   fontFamily: "'Space Grotesk', sans-serif",
                 }}
               >
-                05
+                07
               </span>
             <motion.h2
               variants={fadeUp}
