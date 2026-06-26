@@ -263,7 +263,12 @@ const AMBASSADOR_LEVELS = [
       "AyurGenX Stickers",
       "Community Recognition",
     ],
+    extras: [
+      "Certificate of Completion",
+      "Official Recognition",
+    ],
   },
+
   {
     level: "Level 2",
     name: "Growth Ambassador",
@@ -273,25 +278,44 @@ const AMBASSADOR_LEVELS = [
       "AyurGenX Merchandise",
       "Priority Internship Consideration",
     ],
+    extras: [
+      "Higher Campus Visibility",
+      "Early Internship Access",
+    ],
   },
+
   {
     level: "Level 3",
     name: "Star Ambassador",
     target: "100 Community Joins",
     rewards: [
       "Star Ambassador Certificate",
-      "Founder Interaction",
-      "Fast-track Internship Interview",
+      "Premium Merchandise",
+      "Founder Interaction Session",
+      "Fast-Track Internship Interview",
+    ],
+    extras: [
+      "Direct Founder Access",
+      "Priority Hiring Pipeline",
     ],
   },
+
   {
     level: "Level 4",
     name: "Elite Ambassador",
     target: "150+ Community Joins",
     rewards: [
-      "Founder Mentorship",
+      "Elite Ambassador Award",
+      "Premium Merchandise Kit",
+      "1-on-1 Founder Mentorship",
       "Guaranteed Internship Interview",
-      "Featured on LinkedIn",
+      "Featured on LinkedIn & Social Media",
+    ],
+    extras: [
+      "Letter of Recommendation",
+      "LinkedIn Recommendation",
+      "Exclusive Merchandise",
+      "Certificate of Completion",
     ],
   },
 ];
@@ -1508,8 +1532,10 @@ function Ambassador() {
                     {AMBASSADOR_LEVELS[activeLevel].target}
                   </h2>
 
+                    
                   <div className="mt-10 space-y-5">
 
+                    {/* REWARDS */}
                     {AMBASSADOR_LEVELS[activeLevel].rewards.map((reward) => (
 
                       <div
@@ -1533,6 +1559,163 @@ function Ambassador() {
                       </div>
 
                     ))}
+
+                    {/* EXTRA REWARDS */}
+                    {AMBASSADOR_LEVELS[activeLevel].extras.length > 0 && (
+
+                      <div
+                        className="pt-8 mt-10"
+                        style={{
+                          borderTop: "1px solid rgba(49,139,151,0.15)",
+                        }}
+                      >
+
+                        <p
+                          style={{
+                            color: TEAL.accentDeep,
+                            letterSpacing: "0.18em",
+                            fontSize: "13px",
+                            textTransform: "uppercase",
+                            marginBottom: "20px",
+                            fontWeight: 600,
+                          }}
+                        >
+                          Additional Benefits
+                        </p>
+
+                        <div className="space-y-4">
+
+                          {AMBASSADOR_LEVELS[activeLevel].extras.map((item) => (
+
+                            <div
+                              key={item}
+                              className="flex gap-4 items-center"
+                            >
+                              <Sparkles
+                                size={18}
+                                color={TEAL.accentDeep}
+                              />
+
+                              <span
+                                style={{
+                                  fontSize: "18px",
+                                  color: TEAL.inkSoft,
+                                }}
+                              >
+                                {item}
+                              </span>
+
+                            </div>
+
+                          ))}
+
+                        </div>
+
+                      </div>
+
+                    )}
+
+                    {/* TOP PERFORMER AWARDS (Only Elite) */}
+                    {activeLevel === 3 && (
+
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="pt-8 mt-10"
+                        style={{
+                          borderTop: "1px solid rgba(49,139,151,0.15)",
+                        }}
+                      >
+
+                        <p
+                          style={{
+                            color: TEAL.accentDeep,
+                            letterSpacing: "0.18em",
+                            fontSize: "13px",
+                            textTransform: "uppercase",
+                            marginBottom: "20px",
+                            fontWeight: 600,
+                          }}
+                        >
+                          Top Performer Awards
+                        </p>
+
+                        <div className="space-y-5">
+
+                          <div>
+                            <h4
+                              style={{
+                                color: TEAL.ink,
+                                fontWeight: 700,
+                                fontSize: "18px",
+                              }}
+                            >
+                              🥇 First Place
+                            </h4>
+
+                            <p
+                              style={{
+                                color: TEAL.inkSoft,
+                                marginTop: "6px",
+                                lineHeight: 1.7,
+                              }}
+                            >
+                              LinkedIn Premium (3 Months)<br />
+                              Elite Ambassador Recognition<br />
+                              Founder Mentorship Session
+                            </p>
+                          </div>
+
+                          <div>
+                            <h4
+                              style={{
+                                color: TEAL.ink,
+                                fontWeight: 700,
+                                fontSize: "18px",
+                              }}
+                            >
+                              🥈 Second Place
+                            </h4>
+
+                            <p
+                              style={{
+                                color: TEAL.inkSoft,
+                                marginTop: "6px",
+                                lineHeight: 1.7,
+                              }}
+                            >
+                              ChatGPT Plus (1 Month)<br />
+                              Premium Merchandise Kit
+                            </p>
+                          </div>
+
+                          <div>
+                            <h4
+                              style={{
+                                color: TEAL.ink,
+                                fontWeight: 700,
+                                fontSize: "18px",
+                              }}
+                            >
+                              🥉 Third Place
+                            </h4>
+
+                            <p
+                              style={{
+                                color: TEAL.inkSoft,
+                                marginTop: "6px",
+                                lineHeight: 1.7,
+                              }}
+                            >
+                              Exclusive AyurGenX Merchandise Bundle
+                            </p>
+                          </div>
+
+                        </div>
+
+                      </motion.div>
+
+                    )}
 
                   </div>
 
