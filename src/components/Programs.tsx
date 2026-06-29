@@ -265,7 +265,7 @@ export default function ProgramsSection() {
 
                     <h3 className="mt-1 text-3xl text-white">
 
-                      Bunny 👋
+                      Aarav 👋
 
                     </h3>
 
