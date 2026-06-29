@@ -168,4 +168,6 @@ function FooterLink({ label }: { label: string }) {
   return (
     <Link to={to} className="hover:text-white transition-colors">{label}</Link>
   );
+
+  
 }

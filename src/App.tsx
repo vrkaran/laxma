@@ -70,6 +70,7 @@ import WomenCare from './pages/diseases/WomenCare';
 import Thyroid from './pages/diseases/thyroid';
 import Hackathon from './pages/hackathon';
 import Ambassador from './pages/Ambassador'
+import Home from "./pages/Home"
 
 function App() {
   return (
@@ -81,10 +82,7 @@ function App() {
           path="/"
           element={
             <PageTransition>
-              <HeroHeadline />
-              <HeroSectionV2 />
-              
-              <FinalCTA />
+              <Home/>
             </PageTransition>
           }
         />
