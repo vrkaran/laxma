@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 import {
-  ScanLine,
-  BrainCircuit,
-  Sparkles,
-  RefreshCw,
+  Scan,
+  Circuitry,
+  Sparkle,
+  ArrowsClockwise,
   Dna,
-  Activity,
+  Pulse,
   ShieldCheck,
-} from "lucide-react";
+} from "@phosphor-icons/react";
 
 const steps = [
   {
@@ -15,7 +15,7 @@ const steps = [
     title: "We Listen to Your Body",
     description:
       "Your vitals, lifestyle, dosha profile and 50+ biomarkers are gathered into a single, living health signal.",
-    icon: ScanLine,
+    icon: Scan,
     color: "#84D8FF",
   },
   {
@@ -23,7 +23,7 @@ const steps = [
     title: "Ayurveda Meets AI",
     description:
       "Our hybrid engine fuses 5000+ years of Ayurvedic logic with deep-learning models to find the root cause.",
-    icon: BrainCircuit,
+    icon: Circuitry,
     color: "#7EF2C8",
   },
   {
@@ -31,7 +31,7 @@ const steps = [
     title: "A Plan Built for You",
     description:
       "Herbs, nutrition, routines and programs are tailored precisely to your constitution and current state.",
-    icon: Sparkles,
+    icon: Sparkle,
     color: "#EFD98B",
   },
   {
@@ -39,14 +39,14 @@ const steps = [
     title: "It Learns Every Day",
     description:
       "As your body responds, the intelligence recalibrates — getting smarter and more personal over time.",
-    icon: RefreshCw,
+    icon: ArrowsClockwise,
     color: "#9EF5A5",
   },
 ];
 
 const capabilities = [
   { icon: Dna, label: "Genetic & Dosha Mapping" },
-  { icon: Activity, label: "Real-time Biomarker Tracking" },
+  { icon: Pulse, label: "Real-time Biomarker Tracking" },
   { icon: ShieldCheck, label: "Private & Secure by Design" },
 ];
 
@@ -72,7 +72,7 @@ export default function AISection() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <h2 className="font-serif text-5xl leading-tight text-white md:text-6xl">
+          <h2 className="font-serif text-4xl leading-tight text-white sm:text-5xl md:text-6xl">
             Intelligence That
             <span className="block bg-gradient-to-r from-[#EFD98B] to-[#7EF2C8] bg-clip-text text-transparent">
               Understands You
@@ -96,7 +96,7 @@ export default function AISection() {
             className="absolute left-0 right-0 top-9 hidden h-px origin-left bg-gradient-to-r from-[#84D8FF] via-[#7EF2C8] to-[#EFD98B] lg:block"
           />
 
-          <div className="grid gap-10 lg:grid-cols-4">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((step, i) => {
               const Icon = step.icon;
               return (
@@ -106,24 +106,24 @@ export default function AISection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15, duration: 0.6 }}
-                  className="relative"
+                  className="group relative"
                 >
                   {/* Node */}
                   <div className="relative z-10 mx-auto flex h-[72px] w-[72px] items-center justify-center">
                     <div
-                      className="absolute inset-0 rounded-full blur-md"
+                      className="absolute inset-0 rounded-full blur-md transition-opacity duration-300 group-hover:opacity-80"
                       style={{ background: `${step.color}30` }}
                     />
                     <div
-                      className="relative flex h-[72px] w-[72px] items-center justify-center rounded-full border bg-[#0B1F1B]"
+                      className="relative flex h-[72px] w-[72px] items-center justify-center rounded-full border bg-[#0B1F1B] transition-transform duration-300 group-hover:scale-110"
                       style={{ borderColor: `${step.color}55` }}
                     >
-                      <Icon size={28} color={step.color} />
+                      <Icon weight="duotone" size={28} color={step.color} />
                     </div>
                   </div>
 
                   {/* Card */}
-                  <div className="mt-8 rounded-[26px] border border-white/10 bg-white/[0.03] p-7 text-center transition-colors hover:border-white/20">
+                  <div className="mt-8 rounded-[26px] border border-white/10 bg-white/[0.03] p-7 text-center transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]">
                     <p
                       className="text-xs font-semibold uppercase tracking-[0.32em]"
                       style={{ color: step.color }}
@@ -154,9 +154,9 @@ export default function AISection() {
           {capabilities.map(({ icon: Icon, label }) => (
             <div
               key={label}
-              className="flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] px-6 py-3 text-sm text-white/75 backdrop-blur-sm"
+              className="flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] px-6 py-3 text-sm text-white/75 backdrop-blur-sm transition-colors duration-300 hover:border-[#7EF2C8]/30 hover:bg-white/[0.08]"
             >
-              <Icon className="h-4 w-4 text-[#7EF2C8]" />
+              <Icon weight="duotone" className="h-4 w-4 text-[#7EF2C8]" />
               {label}
             </div>
           ))}

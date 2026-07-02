@@ -1,24 +1,24 @@
 import { motion } from "framer-motion";
+import type { ReactNode } from "react";
 import HeroCards from "./HeroCards";
 import HeroOrbit from "./HeroOrbit";
 import {
   ArrowRight,
   ShieldCheck,
-  Sparkles,
-  HeartHandshake,
+  Sparkle,
+  Handshake,
   Leaf,
   Cpu,
   Wind,
   Flame,
-  Droplet,
-  Activity,
-  TrendingUp,
-} from "lucide-react";
+  Drop,
+  Pulse,
+  TrendUp,
+} from "@phosphor-icons/react";
 import heroBg from "../image/home/hero-bg.jpg";
-import GlassCard from "./GlassCard";
 
 const trustBadges = [
-  { label: "Trusted by Doctors", icon: HeartHandshake },
+  { label: "Trusted by Doctors", icon: Handshake },
   { label: "AI-Powered Health Intelligence", icon: Cpu },
   { label: "5000+ Years of Ayurveda", icon: Leaf },
   { label: "Privacy First", icon: ShieldCheck },
@@ -27,13 +27,13 @@ const trustBadges = [
 const doshas = [
   { label: "Vata", icon: Wind },
   { label: "Pitta", icon: Flame },
-  { label: "Kapha", icon: Droplet },
+  { label: "Kapha", icon: Drop },
 ];
 
 const doshaBars = [80, 65, 90, 55, 70];
 const vitalityBars = [60, 85, 45, 75, 90];
 
-function GlassFrame({ children }) {
+function GlassFrame({ children }: { children: ReactNode }) {
   return (
     <div className="relative rounded-[28px] p-[1px] bg-gradient-to-br from-white/40 via-emerald-200/15 to-white/5">
       <div className="shine-card relative overflow-hidden rounded-[27px] bg-[#0d2a23]/70 backdrop-blur-xl border border-white/10 px-6 py-5 shadow-[0_20px_60px_-15px_rgba(0,0,0,.65)]">
@@ -43,10 +43,10 @@ function GlassFrame({ children }) {
   );
 }
 
-function MiniBars({ bars }) {
+function MiniBars({ bars }: { bars: number[] }) {
   return (
     <div className="mt-4 space-y-2">
-      {bars.map((w, i) => (
+      {bars.map((w: number, i: number) => (
         <div key={i} className="h-1.5 w-full rounded-full bg-white/10 overflow-hidden">
           <div
             className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-[#EFD98B]"
@@ -62,14 +62,14 @@ function DoshaCard() {
   return (
     <GlassFrame>
       <div className="flex items-center gap-2 text-white/90">
-        <Leaf className="h-4 w-4 text-emerald-300" />
+        <Leaf weight="duotone" className="h-4 w-4 text-emerald-300" />
         <span className="text-xs font-semibold uppercase tracking-[0.18em]">Dosha Balance</span>
       </div>
       <div className="mt-5 flex justify-between">
         {doshas.map(({ label, icon: Icon }) => (
           <div key={label} className="flex flex-col items-center gap-2">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/5">
-              <Icon className="h-5 w-5 text-emerald-200" />
+            <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/5 transition-colors duration-300 hover:border-emerald-300/50 hover:bg-emerald-300/10">
+              <Icon weight="duotone" className="h-5 w-5 text-emerald-200" />
             </div>
             <span className="text-[11px] text-white/60">{label}</span>
           </div>
@@ -89,7 +89,7 @@ function VitalityCard() {
   return (
     <GlassFrame>
       <div className="flex items-center gap-2 text-white/90">
-        <Activity className="h-4 w-4 text-emerald-300" />
+        <Pulse weight="duotone" className="h-4 w-4 text-emerald-300" />
         <span className="text-xs font-semibold uppercase tracking-[0.18em]">Vitality Score</span>
       </div>
       <div className="mt-5 flex items-center gap-6">
@@ -140,7 +140,7 @@ function LongevityCard() {
   return (
     <GlassFrame>
       <div className="flex items-center gap-2 text-white/90">
-        <TrendingUp className="h-4 w-4 text-emerald-300" />
+        <TrendUp weight="duotone" className="h-4 w-4 text-emerald-300" />
         <span className="text-xs font-semibold uppercase tracking-[0.18em]">Longevity Potential</span>
       </div>
       <svg viewBox={`0 0 ${w} ${h}`} className="mt-5 h-20 w-full overflow-visible">
@@ -161,24 +161,25 @@ function LongevityCard() {
 }
 
 const railCards = [DoshaCard, VitalityCard, LongevityCard];
+void railCards;
 
 export default function Hero() {
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative min-h-screen w-full overflow-hidden">
       {/* Background Image */}
-        <img
+      <img
         src={heroBg}
         alt="AyurGenX Hero"
         className="absolute inset-0 h-full w-full object-cover object-[62%_58px] lg:object-[62%_80px]"
-        />
+      />
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#081B17]/85 via-[#081B17]/55 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#081B17]/90 via-[#081B17]/65 to-[#081B17]/20 sm:to-transparent" />
 
       {/* Soft Glow */}
       <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_top_left,rgba(34,197,94,.18),transparent_45%)]" />
 
       {/* Main Content */}
-      <div className="relative z-20 mx-auto grid h-full max-w-7xl grid-cols-1 items-center gap-12 px-6 pt-26 lg:grid-cols-2 lg:px-10 lg:pt-32">
+      <div className="relative z-20 mx-auto grid min-h-screen max-w-7xl grid-cols-1 items-center gap-12 px-5 pt-28 pb-20 sm:px-6 lg:grid-cols-2 lg:px-10 lg:pt-32 lg:pb-0">
 
         {/* LEFT */}
         <motion.div
@@ -192,52 +193,53 @@ export default function Hero() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-5 py-2"
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-4 py-2 sm:px-5 transition-colors duration-300 hover:border-emerald-300/40 hover:bg-white/[0.16]"
           >
-            <Sparkles className="h-4 w-4 text-emerald-300" />
-            <span className="text-sm font-medium tracking-wide text-white">
+            <Sparkle weight="fill" className="h-4 w-4 text-emerald-300" />
+            <span className="text-xs font-medium tracking-wide text-white sm:text-sm">
               Precision Ayurveda + Artificial Intelligence
             </span>
           </motion.div>
 
-        <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.25 }}
-        className="mt-2"
-        >
-        <h2
-            className="
-            font-serif
-            text-[4.4rem]
-            md:text-[5.8rem]
-            leading-none
-            tracking-[-0.04em]
-        bg-gradient-to-b
-            from-[#FFFCE7]
-            via-[#F4DE97]
-            to-[#D7A73A]
-            bg-clip-text
-            text-transparent
-            drop-shadow-[0_0_22px_rgba(255,220,120,.28)]
-            "
-        >
-            AyurGenX™
-        </h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25 }}
+            className="mt-2"
+          >
+            <h1
+              className="
+              font-serif
+              text-[3.25rem]
+              sm:text-[4.4rem]
+              md:text-[5.8rem]
+              leading-none
+              tracking-[-0.04em]
+              bg-gradient-to-b
+              from-[#FFFCE7]
+              via-[#F4DE97]
+              to-[#D7A73A]
+              bg-clip-text
+              text-transparent
+              drop-shadow-[0_0_22px_rgba(255,220,120,.28)]
+              "
+            >
+              AyurGenX™
+            </h1>
 
-        <div className="mt-3 h-px w-72 bg-gradient-to-r from-[#E7C86E] via-[#F7EFC7] to-transparent" />
+            <div className="mt-3 h-px w-56 max-w-full bg-gradient-to-r from-[#E7C86E] via-[#F7EFC7] to-transparent sm:w-72" />
 
-        <p className="mt-2 text-[11px] uppercase tracking-[0.42em] text-[#E9D896]/80">
-            Predict • Prevent • Personalize • Prolong
-        </p>
-        </motion.div>
+            <p className="mt-2 text-[10px] uppercase tracking-[0.32em] text-[#E9D896]/80 sm:text-[11px] sm:tracking-[0.42em]">
+              Predict • Prevent • Personalize • Prolong
+            </p>
+          </motion.div>
 
           {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.45 }}
-            className="mt-8 max-w-2xl text-lg leading-8 text-white/80 md:text-xl"
+            className="mt-8 max-w-2xl text-base leading-7 text-white/80 sm:text-lg sm:leading-8 md:text-xl"
           >
             AyurGenX combines 5000+ years of Ayurvedic knowledge with
             cutting-edge AI to understand your body, improve your wellness,
@@ -249,21 +251,21 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="mt-10 flex flex-wrap gap-5"
+            className="mt-10 flex flex-col flex-wrap gap-4 sm:flex-row sm:gap-5"
           >
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              className="flex items-center gap-2 rounded-full bg-[#0F5A4A] px-8 py-4 text-white shadow-lg hover:bg-[#126654] transition-all duration-300"
+              className="group flex w-full items-center justify-center gap-2 rounded-full bg-[#0F5A4A] px-8 py-4 text-white shadow-lg transition-all duration-300 hover:bg-[#126654] hover:shadow-[0_18px_40px_-12px_rgba(15,90,74,.8)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#081B17] sm:w-auto"
             >
               Start Your Journey
-              <ArrowRight size={18} />
+              <ArrowRight weight="bold" size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
             </motion.button>
 
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              className="rounded-full border border-white/25 bg-white/10 backdrop-blur-md px-8 py-4 text-white"
+              className="w-full rounded-full border border-white/25 bg-white/10 px-8 py-4 text-white backdrop-blur-md transition-colors duration-300 hover:border-white/40 hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#081B17] sm:w-auto"
             >
               Explore Platform
             </motion.button>
@@ -274,14 +276,14 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
-            className="mt-14 flex flex-wrap gap-4"
+            className="mt-12 flex flex-wrap gap-3 sm:mt-14 sm:gap-4"
           >
             {trustBadges.map(({ label, icon: Icon }) => (
               <div
                 key={label}
-                className="flex items-center gap-2 rounded-full border border-white/15 bg-white/10 backdrop-blur-sm px-4 py-2 text-sm text-white/90"
+                className="flex items-center gap-2 rounded-full border border-white/15 bg-white/10 backdrop-blur-sm px-3.5 py-2 text-xs text-white/90 transition-colors duration-300 hover:border-emerald-300/40 hover:bg-white/[0.16] sm:px-4 sm:text-sm"
               >
-                <Icon className="h-3.5 w-3.5 text-emerald-300" />
+                <Icon weight="duotone" className="h-3.5 w-3.5 text-emerald-300" />
                 {label}
               </div>
             ))}
@@ -289,9 +291,8 @@ export default function Hero() {
         </motion.div>
 
         {/* RIGHT — floating stat cards */}
-
         <HeroOrbit />
-        <HeroCards/>
+        <HeroCards />
       </div>
 
       <style>{`

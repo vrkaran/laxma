@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
+import { Star, Quotes } from "@phosphor-icons/react";
 
 const testimonials = [
   {
@@ -79,16 +79,17 @@ export default function Testimonials() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.6 }}
               whileHover={{ y: -8 }}
-              className="relative flex flex-col rounded-[30px] border border-[#D7E4DF] bg-white p-8 shadow-[0_25px_60px_rgba(0,0,0,.06)]"
+              className="relative flex flex-col rounded-[30px] border border-[#D7E4DF] bg-white p-8 shadow-[0_25px_60px_rgba(0,0,0,.06)] transition-shadow duration-300 hover:border-[#0C6C57]/20 hover:shadow-[0_35px_80px_rgba(12,108,87,.12)]"
             >
-              <Quote className="h-9 w-9 text-[#0C6C57]/15" />
+              <Quotes weight="fill" className="h-9 w-9 text-[#0C6C57]/15" />
 
               {/* Rating */}
               <div className="mt-4 flex gap-1">
                 {[...Array(5)].map((_, s) => (
                   <Star
                     key={s}
-                    className="h-4 w-4 fill-[#EFB100] text-[#EFB100]"
+                    weight="fill"
+                    className="h-4 w-4 text-[#EFB100]"
                   />
                 ))}
               </div>
@@ -130,7 +131,7 @@ export default function Testimonials() {
           {stats.map(([value, label]) => (
             <div
               key={label}
-              className="rounded-[26px] border border-[#D7E4DF] bg-white p-8 text-center shadow-[0_20px_60px_rgba(0,0,0,.04)]"
+              className="rounded-[26px] border border-[#D7E4DF] bg-white p-8 text-center shadow-[0_20px_60px_rgba(0,0,0,.04)] transition-shadow duration-300 hover:shadow-[0_28px_70px_rgba(12,108,87,.1)]"
             >
               <h3 className="bg-gradient-to-r from-[#0C6C57] to-[#D4B85C] bg-clip-text text-5xl font-light text-transparent">
                 {value}

@@ -1,4 +1,4 @@
-import { Activity, Brain, Leaf, TrendingUp } from "lucide-react";
+import { Pulse } from "@phosphor-icons/react";
 import { motion } from "framer-motion";
 import HUDCard from "./HUDCard";
 
@@ -32,7 +32,8 @@ Excellent Condition
 
 <div>
 
-<Activity
+<Pulse
+weight="duotone"
 className="h-10 w-10 text-emerald-300"
 />
 

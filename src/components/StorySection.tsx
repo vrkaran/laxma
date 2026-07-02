@@ -3,10 +3,8 @@ import {
   Brain,
   Cpu,
   Leaf,
-  Sparkles,
-  ShieldCheck,
-  Activity,
-} from "lucide-react";
+  Pulse,
+} from "@phosphor-icons/react";
 
 const ayurveda = [
   "5000+ Years of Ancient Wisdom",
@@ -114,9 +112,10 @@ export default function StorySection() {
             className="
             mt-10
             font-serif
-            text-5xl
+            text-4xl
             leading-tight
             text-white
+            sm:text-5xl
             md:text-7xl
             "
           >
@@ -175,11 +174,12 @@ export default function StorySection() {
 
           >
 
-            <div className="flex items-center gap-5 rounded-xl border border-white/5 bg-white/[0.02] px-5 py-4 backdrop-blur-sm transition-colors hover:border-[#EFD98B]/20">
+            <div className="flex items-center gap-5 rounded-xl border border-white/5 bg-white/[0.02] px-5 py-4 backdrop-blur-sm transition-all duration-300 hover:border-[#EFD98B]/30 hover:bg-white/[0.04]">
 
               <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#EFD98B]/20 bg-[#EFD98B]/5">
 
                 <Leaf
+                  weight="duotone"
                   className="h-8 w-8 text-[#EFD98B]"
                 />
 
@@ -287,7 +287,7 @@ export default function StorySection() {
               }}
               className="absolute top-20 flex h-20 w-20 items-center justify-center rounded-full border border-[#EFD98B]/30 bg-[#EFD98B]/10 backdrop-blur-sm"
             >
-              <Leaf className="h-9 w-9 text-[#EFD98B]" />
+              <Leaf weight="duotone" className="h-9 w-9 text-[#EFD98B]" />
             </motion.div>
 
             {/* Bottom */}
@@ -302,7 +302,7 @@ export default function StorySection() {
               }}
               className="absolute bottom-20 flex h-20 w-20 items-center justify-center rounded-full border border-[#7EF2C8]/30 bg-[#7EF2C8]/10 backdrop-blur-sm"
             >
-              <Brain className="h-9 w-9 text-[#7EF2C8]" />
+              <Brain weight="duotone" className="h-9 w-9 text-[#7EF2C8]" />
             </motion.div>
 
             {/* Center */}
@@ -318,7 +318,7 @@ export default function StorySection() {
               }}
               className="relative z-20 flex h-28 w-28 items-center justify-center rounded-full border border-white/15 bg-white/5 backdrop-blur-sm"
             >
-              <Cpu className="h-11 w-11 text-white" />
+              <Cpu weight="duotone" className="h-11 w-11 text-white" />
             </motion.div>
 
             {/* Data Particles */}
@@ -355,7 +355,7 @@ export default function StorySection() {
             }}
           >
 
-            <div className="flex items-center justify-end gap-4 rounded-xl border border-white/5 bg-white/[0.02] px-5 py-4 backdrop-blur-sm transition-colors hover:border-[#7EF2C8]/20">
+            <div className="flex items-center justify-end gap-4 rounded-xl border border-white/5 bg-white/[0.02] px-5 py-4 backdrop-blur-sm transition-all duration-300 hover:border-[#7EF2C8]/30 hover:bg-white/[0.04]">
 
               <div className="text-right">
 
@@ -370,7 +370,7 @@ export default function StorySection() {
               </div>
 
               <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#7EF2C8]/20 bg-[#7EF2C8]/5">
-                <Brain className="h-8 w-8 text-[#7EF2C8]" />
+                <Brain weight="duotone" className="h-8 w-8 text-[#7EF2C8]" />
               </div>
 
             </div>
@@ -431,12 +431,13 @@ export default function StorySection() {
           className="mt-16 text-center"
         >
 
-          <Activity className="mx-auto mb-8 h-10 w-10 text-[#7EF2C8]" />
+          <Pulse weight="duotone" className="mx-auto mb-8 h-10 w-10 text-[#7EF2C8]" />
 
           <h2
             className="
             font-serif
-            text-5xl
+            text-4xl
+            sm:text-5xl
             md:text-6xl
             text-white
             "

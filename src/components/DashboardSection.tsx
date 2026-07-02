@@ -1,20 +1,18 @@
 import { motion } from "framer-motion";
 import {
-  Activity,
+  Pulse,
   Brain,
   Moon,
-  Salad,
+  BowlFood,
   ShieldCheck,
-  Sparkles,
-  HeartPulse,
   ArrowUpRight,
-} from "lucide-react";
+} from "@phosphor-icons/react";
 
 const cards = [
-  { title: "AI Vitality", value: "87", subtitle: "Excellent", icon: Activity, color: "#7EF2C8", score: 87 },
+  { title: "AI Vitality", value: "87", subtitle: "Excellent", icon: Pulse, color: "#7EF2C8", score: 87 },
   { title: "Dosha Balance", value: "Balanced", subtitle: "Vata • Pitta • Kapha", icon: Brain, color: "#EFD98B", score: 78 },
   { title: "Sleep Score", value: "92%", subtitle: "Recovered", icon: Moon, color: "#84D8FF", score: 92 },
-  { title: "Nutrition", value: "96%", subtitle: "Optimized", icon: Salad, color: "#9EF5A5", score: 96 },
+  { title: "Nutrition", value: "96%", subtitle: "Optimized", icon: BowlFood, color: "#9EF5A5", score: 96 },
 ];
 
 
@@ -52,7 +50,7 @@ export default function DashboardSection() {
         >
 
 
-          <h2 className="mt-10 font-serif text-6xl leading-tight text-white">
+          <h2 className="mt-10 font-serif text-4xl leading-tight text-white sm:text-5xl md:text-6xl">
 
             Everything Your Body
             <span className="block bg-gradient-to-r from-[#EFD98B] to-[#7EF2C8] bg-clip-text text-transparent">
@@ -132,6 +130,7 @@ export default function DashboardSection() {
               </div>
 
               <ShieldCheck
+                weight="duotone"
                 className="h-5 w-5 text-[#7EF2C8]"
               />
 
@@ -145,7 +144,7 @@ export default function DashboardSection() {
 
               {/* Sidebar */}
 
-              <div className="border-r border-white/10 p-8">
+              <div className="border-b border-white/10 p-6 sm:p-8 lg:border-b-0 lg:border-r">
 
                 <div className="flex items-center gap-4">
 
@@ -202,6 +201,7 @@ export default function DashboardSection() {
                       </span>
 
                       <ArrowUpRight
+                        weight="bold"
                         size={16}
                       />
 
@@ -216,7 +216,7 @@ export default function DashboardSection() {
 
               {/* Main Dashboard */}
 
-              <div className="p-8">
+              <div className="p-6 sm:p-8">
 
                 <div className="grid gap-6 md:grid-cols-2">
 
@@ -252,7 +252,7 @@ export default function DashboardSection() {
                           y:-6,
                         }}
 
-                        className="group rounded-[28px] border border-white/10 bg-white/[0.03] p-7"
+                        className="group rounded-[28px] border border-white/10 bg-white/[0.03] p-6 transition-colors duration-300 hover:border-[#7EF2C8]/30 hover:bg-white/[0.05] sm:p-7"
 
                       >
 
@@ -286,13 +286,14 @@ export default function DashboardSection() {
                           </div>
 
                           <div
-                            className="flex h-16 w-16 items-center justify-center rounded-2xl"
+                            className="flex h-16 w-16 items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110"
                             style={{
                               background:`${card.color}18`,
                             }}
                           >
 
                             <Icon
+                              weight="duotone"
                               size={28}
                               color={card.color}
                             />
@@ -355,7 +356,7 @@ export default function DashboardSection() {
                     transition={{
                       delay: .5,
                     }}
-                    className="rounded-[30px] border border-white/10 bg-white/[0.03] p-8"
+                    className="rounded-[30px] border border-white/10 bg-white/[0.03] p-6 sm:p-8"
                   >
 
                     <div className="flex items-center justify-between">
@@ -376,7 +377,8 @@ export default function DashboardSection() {
 
                       </div>
 
-                      <Activity
+                      <Pulse
+                        weight="duotone"
                         className="text-[#7EF2C8]"
                       />
 
@@ -477,10 +479,11 @@ export default function DashboardSection() {
                     transition={{
                       delay: .7,
                     }}
-                    className="rounded-[30px] border border-white/10 bg-gradient-to-br from-[#0D2A24] to-[#081816] p-8"
+                    className="rounded-[30px] border border-white/10 bg-gradient-to-br from-[#0D2A24] to-[#081816] p-6 sm:p-8"
                   >
 
                     <Brain
+                      weight="duotone"
                       className="text-[#7EF2C8]"
                       size={34}
                     />
@@ -515,7 +518,7 @@ export default function DashboardSection() {
                       whileTap={{
                         scale: .98,
                       }}
-                      className="mt-10 w-full rounded-full bg-[#0F5A4A] py-4 text-white"
+                      className="mt-10 w-full rounded-full bg-[#0F5A4A] py-4 text-white transition-all duration-300 hover:bg-[#126654] hover:shadow-[0_18px_40px_-12px_rgba(15,90,74,.8)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#081816]"
                     >
                       Open AI Coach
                     </motion.button>
@@ -549,7 +552,7 @@ export default function DashboardSection() {
           transition={{
             delay: .3,
           }}
-          className="mt-16 grid gap-8 md:grid-cols-4"
+          className="mt-16 grid grid-cols-2 gap-4 sm:gap-8 md:grid-cols-4"
         >
 
           {[
@@ -561,7 +564,7 @@ export default function DashboardSection() {
 
             <div
               key={label}
-              className="rounded-[26px] border border-white/10 bg-white/[0.03] p-8 text-center"
+              className="rounded-[26px] border border-white/10 bg-white/[0.03] p-6 text-center transition-colors duration-300 hover:border-[#7EF2C8]/30 hover:bg-white/[0.05] sm:p-8"
             >
 
               <h3 className="text-5xl font-light bg-gradient-to-r from-[#EFD98B] to-[#7EF2C8] bg-clip-text text-transparent">
