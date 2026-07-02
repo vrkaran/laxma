@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "@phosphor-icons/react";
 import playstoreImg from "../image/icon/playstore.webp";
 import appstoreImg from "../image/icon/appstore.webp";
 
@@ -54,20 +54,20 @@ export default function CTA() {
           </p>
 
           {/* Buttons */}
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-5">
+          <div className="mt-12 flex flex-col flex-wrap items-center justify-center gap-4 sm:flex-row sm:gap-5">
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              className="flex items-center gap-2 rounded-full bg-[#0F5A4A] px-9 py-4 text-white shadow-lg transition-all duration-300 hover:bg-[#126654]"
+              className="group flex w-full items-center justify-center gap-2 rounded-full bg-[#0F5A4A] px-9 py-4 text-white shadow-lg transition-all duration-300 hover:bg-[#126654] hover:shadow-[0_18px_40px_-12px_rgba(15,90,74,.8)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#06120F] sm:w-auto"
             >
               Start Your Journey
-              <ArrowRight size={18} />
+              <ArrowRight weight="bold" size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
             </motion.button>
 
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              className="rounded-full border border-white/25 bg-white/10 px-9 py-4 text-white backdrop-blur-md"
+              className="w-full rounded-full border border-white/25 bg-white/10 px-9 py-4 text-white backdrop-blur-md transition-colors duration-300 hover:border-white/40 hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#06120F] sm:w-auto"
             >
               Talk to an Expert
             </motion.button>
@@ -87,7 +87,7 @@ export default function CTA() {
           <div className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-white/55">
             {assurances.map((item) => (
               <div key={item} className="flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4 text-emerald-300" />
+                <ShieldCheck weight="duotone" className="h-4 w-4 text-emerald-300" />
                 {item}
               </div>
             ))}

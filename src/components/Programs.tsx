@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import {
   Moon,
-  HeartPulse,
+  Heartbeat,
   Brain,
   Leaf,
   ArrowRight,
-  Sparkles,
+  Sparkle,
   ShieldCheck,
-  Activity,
-} from "lucide-react";
+  Pulse,
+} from "@phosphor-icons/react";
 
 const programs = [
   {
@@ -79,7 +79,7 @@ export default function ProgramsSection() {
             }}
           >
 
-            <h2 className="font-serif text-6xl leading-tight text-[#09231E]">
+            <h2 className="font-serif text-4xl leading-tight text-[#09231E] sm:text-5xl md:text-6xl">
 
               Personalized
               <span className="block bg-gradient-to-r from-[#0C6C57] to-[#D4B85C] bg-clip-text text-transparent">
@@ -126,18 +126,19 @@ export default function ProgramsSection() {
                     whileHover={{
                       x: 12,
                     }}
-                    className="group flex items-center justify-between rounded-[28px] border border-[#D7E4DF] bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,.05)]"
+                    className="group flex items-center justify-between rounded-[28px] border border-[#D7E4DF] bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,.05)] transition-shadow duration-300 hover:border-[#0C6C57]/25 hover:shadow-[0_28px_70px_rgba(12,108,87,.12)]"
                   >
 
                     <div className="flex items-center gap-5">
 
                       <div
-                        className="flex h-14 w-14 items-center justify-center rounded-2xl"
+                        className="flex h-14 w-14 items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110"
                         style={{
                           background: `${program.color}20`,
                         }}
                       >
                         <Icon
+                          weight="duotone"
                           size={24}
                           color={program.color}
                         />
@@ -195,12 +196,12 @@ export default function ProgramsSection() {
               whileTap={{
                 scale: .98,
               }}
-              className="mt-16 flex items-center gap-3 rounded-full bg-[#0C6C57] px-8 py-4 text-white"
+              className="group mt-16 flex items-center gap-3 rounded-full bg-[#0C6C57] px-8 py-4 text-white shadow-lg transition-all duration-300 hover:bg-[#0a5849] hover:shadow-[0_18px_40px_-12px_rgba(12,108,87,.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0C6C57]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F5F1]"
             >
 
               Explore All Programs
 
-              <ArrowRight size={18} />
+              <ArrowRight weight="bold" size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
 
             </motion.button>
 
@@ -242,7 +243,7 @@ export default function ProgramsSection() {
                 duration: 4,
                 repeat: Infinity,
               }}
-              className="relative h-[700px] w-[340px] rounded-[46px] border-[10px] border-[#111] bg-[#081816] shadow-[0_50px_120px_rgba(0,0,0,.25)]"
+              className="relative h-[620px] w-[290px] rounded-[46px] border-[10px] border-[#111] bg-[#081816] shadow-[0_50px_120px_rgba(0,0,0,.25)] sm:h-[700px] sm:w-[340px]"
             >
 
               {/* Dynamic Island */}
@@ -271,7 +272,8 @@ export default function ProgramsSection() {
 
                   </div>
 
-                  <HeartPulse
+                  <Heartbeat
+                    weight="duotone"
                     className="text-[#7EF2C8]"
                   />
 
@@ -301,12 +303,12 @@ export default function ProgramsSection() {
 
                 <div className="mt-8 grid grid-cols-2 gap-4">
 
-                                  {[
+                                  {([
                     ["Sleep", "92%", Moon],
-                    ["Vitality", "87", Activity],
+                    ["Vitality", "87", Pulse],
                     ["Protected", "100%", ShieldCheck],
-                    ["AI Coach", "Live", Sparkles],
-                  ].map(([title, value, Icon], i) => {
+                    ["AI Coach", "Live", Sparkle],
+                  ] as const).map(([title, value, Icon], i) => {
                     const CardIcon = Icon as React.ElementType;
 
                     return (
@@ -334,6 +336,7 @@ export default function ProgramsSection() {
                       >
 
                         <CardIcon
+                          weight="duotone"
                           className="text-[#7EF2C8]"
                           size={22}
                         />
@@ -413,7 +416,7 @@ export default function ProgramsSection() {
                 duration: 5,
                 repeat: Infinity,
               }}
-              className="absolute -left-8 top-24 rounded-[26px] border border-[#DCE5E1] bg-white p-5 shadow-[0_25px_60px_rgba(0,0,0,.08)]"
+              className="absolute -left-8 top-24 hidden rounded-[26px] border border-[#DCE5E1] bg-white p-5 shadow-[0_25px_60px_rgba(0,0,0,.08)] sm:block"
             >
 
               <p className="text-xs uppercase tracking-[0.28em] text-[#6A827C]">
@@ -447,7 +450,7 @@ export default function ProgramsSection() {
                 duration: 6,
                 repeat: Infinity,
               }}
-              className="absolute -right-10 bottom-20 rounded-[26px] border border-[#DCE5E1] bg-white p-6 shadow-[0_25px_60px_rgba(0,0,0,.08)]"
+              className="absolute -right-10 bottom-20 hidden rounded-[26px] border border-[#DCE5E1] bg-white p-6 shadow-[0_25px_60px_rgba(0,0,0,.08)] sm:block"
             >
 
               <p className="text-xs uppercase tracking-[0.28em] text-[#6A827C]">
