@@ -165,21 +165,25 @@ void railCards;
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen w-full overflow-hidden">
-      {/* Background Image */}
+    <section className="relative min-h-[100svh] w-full overflow-hidden">
+      {/* Mobile / tablet gradient background (photo hidden below lg) */}
+      <div className="absolute inset-0 lg:hidden bg-gradient-to-b from-[#081B17] via-[#0d2a23] to-[#041210]" />
+      <div className="absolute inset-0 lg:hidden bg-[radial-gradient(circle_at_top,rgba(34,197,94,.22),transparent_55%)]" />
+
+      {/* Background Image (desktop only) */}
       <img
         src={heroBg}
         alt="AyurGenX Hero"
-        className="absolute inset-0 h-full w-full object-cover object-[62%_58px] lg:object-[62%_80px]"
+        className="absolute inset-0 hidden lg:block h-full w-full object-cover object-[62%_80px]"
       />
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#081B17]/90 via-[#081B17]/65 to-[#081B17]/20 sm:to-transparent" />
+      {/* Dark Overlay (desktop image) */}
+      <div className="absolute inset-0 hidden lg:block bg-gradient-to-r from-[#081B17]/90 via-[#081B17]/65 to-[#081B17]/20 lg:to-transparent" />
 
       {/* Soft Glow */}
       <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_top_left,rgba(34,197,94,.18),transparent_45%)]" />
 
       {/* Main Content */}
-      <div className="relative z-20 mx-auto grid min-h-screen max-w-7xl grid-cols-1 items-center gap-12 px-5 pt-28 pb-20 sm:px-6 lg:grid-cols-2 lg:px-10 lg:pt-32 lg:pb-0">
+      <div className="relative z-20 mx-auto grid min-h-[100svh] max-w-7xl grid-cols-1 items-center gap-12 px-5 pt-28 pb-20 sm:px-6 lg:grid-cols-2 lg:px-10 lg:pt-32 lg:pb-0">
 
         {/* LEFT */}
         <motion.div
@@ -290,8 +294,10 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* RIGHT — floating stat cards */}
-        <HeroOrbit />
+        {/* RIGHT — floating stat cards (desktop only) */}
+        <div className="hidden lg:block">
+          <HeroOrbit />
+        </div>
         <HeroCards />
       </div>
 

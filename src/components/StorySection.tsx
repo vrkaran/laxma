@@ -153,7 +153,7 @@ export default function StorySection() {
 
         {/* Main */}
 
-        <div className="relative mt-16 grid items-center gap-16 lg:grid-cols-3">
+        <div className="relative mt-12 grid items-center gap-10 lg:mt-16 lg:gap-16 lg:grid-cols-3">
 
           {/* LEFT */}
 
@@ -247,18 +247,18 @@ export default function StorySection() {
 
           </motion.div>
 
-          {/* CENTER */}
+          {/* CENTER — desktop pillar (lg and up only) */}
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            className="absolute h-40 w-40 rounded-full border border-dashed border-white/10"
+            className="absolute hidden lg:block h-40 w-40 rounded-full border border-dashed border-white/10"
           />
           <motion.div
             initial={{ opacity: 0, scale: .8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="relative flex items-center justify-center h-[520px]"
+            className="relative hidden lg:flex items-center justify-center h-[520px]"
           >
 
             {/* Glow */}
@@ -342,6 +342,47 @@ export default function StorySection() {
 
           </motion.div>
 
+          {/* CENTER — compact mobile fusion (below lg) */}
+          <motion.div
+            initial={{ opacity: 0, scale: .9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: .7 }}
+            className="lg:hidden flex items-center justify-center gap-3 py-2 sm:gap-4"
+          >
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-[#EFD98B]/30 bg-[#EFD98B]/10 sm:h-16 sm:w-16">
+              <Leaf weight="duotone" className="h-6 w-6 text-[#EFD98B] sm:h-7 sm:w-7" />
+            </div>
+
+            <div className="relative h-px w-6 bg-gradient-to-r from-[#EFD98B] to-white/40 sm:w-10">
+              <motion.span
+                animate={{ x: ["-100%", "200%"], opacity: [0, 1, 0] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: "linear" }}
+                className="absolute top-1/2 h-1 w-1 -translate-y-1/2 rounded-full bg-white"
+              />
+            </div>
+
+            <motion.div
+              animate={{ scale: [1, 1.08, 1], opacity: [.9, 1, .9] }}
+              transition={{ duration: 2.5, repeat: Infinity }}
+              className="flex h-[68px] w-[68px] shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 backdrop-blur-sm sm:h-20 sm:w-20"
+            >
+              <Cpu weight="duotone" className="h-8 w-8 text-white sm:h-9 sm:w-9" />
+            </motion.div>
+
+            <div className="relative h-px w-6 bg-gradient-to-r from-white/40 to-[#7EF2C8] sm:w-10">
+              <motion.span
+                animate={{ x: ["-100%", "200%"], opacity: [0, 1, 0] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: "linear", delay: .9 }}
+                className="absolute top-1/2 h-1 w-1 -translate-y-1/2 rounded-full bg-white"
+              />
+            </div>
+
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-[#7EF2C8]/30 bg-[#7EF2C8]/10 sm:h-16 sm:w-16">
+              <Brain weight="duotone" className="h-6 w-6 text-[#7EF2C8] sm:h-7 sm:w-7" />
+            </div>
+          </motion.div>
+
           {/* RIGHT */}
 
           <motion.div
@@ -355,9 +396,9 @@ export default function StorySection() {
             }}
           >
 
-            <div className="flex items-center justify-end gap-4 rounded-xl border border-white/5 bg-white/[0.02] px-5 py-4 backdrop-blur-sm transition-all duration-300 hover:border-[#7EF2C8]/30 hover:bg-white/[0.04]">
+            <div className="flex flex-row-reverse items-center justify-start gap-4 rounded-xl border border-white/5 bg-white/[0.02] px-5 py-4 backdrop-blur-sm transition-all duration-300 hover:border-[#7EF2C8]/30 hover:bg-white/[0.04] lg:flex-row lg:justify-end">
 
-              <div className="text-right">
+              <div className="text-left lg:text-right">
 
                 <p className="text-xs font-medium uppercase tracking-[0.4em] text-[#7EF2C8]">
                   Artificial Intelligence
@@ -393,10 +434,10 @@ export default function StorySection() {
                   transition={{
                     delay: .3 + i * .15,
                   }}
-                  className="flex items-center justify-end gap-5"
+                  className="flex flex-row-reverse items-center justify-start gap-5 lg:flex-row lg:justify-end"
                 >
 
-                  <p className="text-lg text-right text-white/70">
+                  <p className="text-lg text-left text-white/70 lg:text-right">
                     {item}
                   </p>
 
