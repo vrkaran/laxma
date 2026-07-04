@@ -16,6 +16,7 @@ import {
   TrendUp,
 } from "@phosphor-icons/react";
 import heroBg from "../image/home/hero-bg.jpg";
+import heroBgMobile from "../image/home/hero-bg(m).jpg";
 
 const trustBadges = [
   { label: "Trusted by Doctors", icon: Handshake },
@@ -166,9 +167,14 @@ void railCards;
 export default function Hero() {
   return (
     <section className="relative min-h-[100svh] w-full overflow-hidden">
-      {/* Mobile / tablet gradient background (photo hidden below lg) */}
-      <div className="absolute inset-0 lg:hidden bg-gradient-to-b from-[#081B17] via-[#0d2a23] to-[#041210]" />
-      <div className="absolute inset-0 lg:hidden bg-[radial-gradient(circle_at_top,rgba(34,197,94,.22),transparent_55%)]" />
+      {/* Mobile / tablet background image (hidden on lg+) */}
+      <img
+        src={heroBgMobile}
+        alt="AyurGenX Hero"
+        className="absolute inset-0 lg:hidden h-full w-full object-cover object-[30%_center]"
+      />
+      {/* Dark overlay (mobile image) */}
+      <div className="absolute inset-0 lg:hidden bg-gradient-to-b from-[#081B17]/85 via-[#081B17]/60 to-[#041210]/95" />
 
       {/* Background Image (desktop only) */}
       <img
