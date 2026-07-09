@@ -9,38 +9,35 @@ import {
 } from "@phosphor-icons/react";
 
 const cards = [
-  { title: "AI Vitality", value: "87", subtitle: "Excellent", icon: Pulse, color: "#7EF2C8", score: 87 },
-  { title: "Dosha Balance", value: "Balanced", subtitle: "Vata • Pitta • Kapha", icon: Brain, color: "#EFD98B", score: 78 },
-  { title: "Sleep Score", value: "92%", subtitle: "Recovered", icon: Moon, color: "#84D8FF", score: 92 },
-  { title: "Nutrition", value: "96%", subtitle: "Optimized", icon: BowlFood, color: "#9EF5A5", score: 96 },
+  { title: "AI Vitality", value: "87", subtitle: "Excellent", icon: Pulse, color: "#4A6B53", score: 87 },
+  { title: "Dosha Balance", value: "Balanced", subtitle: "Vata • Pitta • Kapha", icon: Brain, color: "#B8862E", score: 78 },
+  { title: "Sleep Score", value: "92%", subtitle: "Recovered", icon: Moon, color: "#7FA6C4", score: 92 },
+  { title: "Nutrition", value: "96%", subtitle: "Optimized", icon: BowlFood, color: "#6E9C78", score: 96 },
 ];
-
 
 export default function DashboardSection() {
   return (
-    <section className="relative overflow-hidden bg-[#071513] py-24">
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#020807] to-transparent z-10 pointer-events-none" />
+    <section className="relative overflow-hidden bg-[#F9F9F6] py-24">
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#F5F5F1] to-transparent z-10 pointer-events-none" />
 
-      {/* Background */}
-
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(30,255,170,.08),transparent_55%)]" />
+      {/* Background tint (glow removed, kept extremely soft) */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(74,107,83,.05),transparent_55%)]" />
 
       <motion.div
         animate={{
           scale: [1, 1.08, 1],
-          opacity: [.25, .4, .25],
+          opacity: [.08, .14, .08],
         }}
         transition={{
           duration: 10,
           repeat: Infinity,
         }}
-        className="absolute left-1/2 top-20 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[#7EF2C8]/10 blur-[140px]"
+        className="absolute left-1/2 top-20 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[#4A6B53]/10 blur-[140px]"
       />
 
       <div className="relative z-20 mx-auto max-w-7xl px-6">
 
         {/* Heading */}
-
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -48,128 +45,82 @@ export default function DashboardSection() {
           transition={{ duration: .8 }}
           className="text-center"
         >
-
-
-          <h2 className="mt-10 font-serif text-4xl leading-tight text-white sm:text-5xl md:text-6xl">
-
+          <h2 className="mt-10 font-serif text-4xl leading-tight text-[#1C3322] sm:text-5xl md:text-6xl">
             Everything Your Body
-            <span className="block bg-gradient-to-r from-[#EFD98B] to-[#7EF2C8] bg-clip-text text-transparent">
-
+            <span className="block bg-gradient-to-r from-[#D4B85C] to-[#4A6B53] bg-clip-text text-transparent">
               Needs. One Dashboard.
-
             </span>
-
           </h2>
 
-          <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-white/60">
-
+          <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-[#55665A]">
             Track your vitality, dosha balance, nutrition,
             sleep and personalized recommendations from one
             intelligent wellness dashboard.
-
           </p>
-
         </motion.div>
 
-
-
         {/* Dashboard */}
-
         <motion.div
-
           initial={{
-            opacity:0,
-            scale:.94,
-            y:80,
+            opacity: 0,
+            scale: .94,
+            y: 80,
           }}
-
           whileInView={{
-            opacity:1,
-            scale:1,
-            y:0,
+            opacity: 1,
+            scale: 1,
+            y: 0,
           }}
-
           viewport={{
-            once:true,
+            once: true,
           }}
-
           transition={{
-            duration:1,
+            duration: 1,
           }}
-
           className="relative mt-16"
-
         >
-
-          {/* Glow */}
-
-          <div className="absolute inset-0 rounded-[40px] bg-[#7EF2C8]/10 blur-[80px]" />
+          {/* Soft shadow instead of glow */}
+          <div className="absolute inset-0 rounded-[40px] bg-[#4A6B53]/5 blur-[80px]" />
 
           {/* Window */}
-
-          <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-[#091B18]/90 backdrop-blur-xl">
+          <div className="relative overflow-hidden rounded-[36px] border border-[#E0E6E1] bg-white shadow-[0_30px_80px_rgba(28,51,34,.08)]">
 
             {/* Top Bar */}
-
-            <div className="flex items-center justify-between border-b border-white/10 px-8 py-5">
-
+            <div className="flex items-center justify-between border-b border-[#E0E6E1] px-8 py-5">
               <div className="flex items-center gap-3">
-
-                <div className="h-3 w-3 rounded-full bg-red-400" />
-
-                <div className="h-3 w-3 rounded-full bg-yellow-400" />
-
-                <div className="h-3 w-3 rounded-full bg-green-400" />
-
+                <div className="h-3 w-3 rounded-full bg-[#E0937D]" />
+                <div className="h-3 w-3 rounded-full bg-[#D4B85C]" />
+                <div className="h-3 w-3 rounded-full bg-[#4A6B53]" />
               </div>
 
-              <div className="rounded-full bg-white/5 px-5 py-2 text-sm text-white/60">
-
+              <div className="rounded-full bg-[#EAF2EC] px-5 py-2 text-sm text-[#55665A]">
                 dashboard.ayurgenx.ai
-
               </div>
 
               <ShieldCheck
                 weight="duotone"
-                className="h-5 w-5 text-[#7EF2C8]"
+                className="h-5 w-5 text-[#4A6B53]"
               />
-
             </div>
 
-
-
             {/* Content */}
-
             <div className="grid lg:grid-cols-[280px_1fr]">
 
               {/* Sidebar */}
-
-              <div className="border-b border-white/10 p-6 sm:p-8 lg:border-b-0 lg:border-r">
-
+              <div className="border-b border-[#E0E6E1] bg-[#FDFCFA] p-6 sm:p-8 lg:border-b-0 lg:border-r">
                 <div className="flex items-center gap-4">
-
-                  <div className="h-14 w-14 rounded-full bg-gradient-to-br from-[#7EF2C8] to-[#EFD98B]" />
-
+                  <div className="h-14 w-14 rounded-full bg-gradient-to-br from-[#4A6B53] to-[#D4B85C]" />
                   <div>
-
-                    <p className="text-xl text-white">
-
+                    <p className="text-xl text-[#1C3322]">
                       Aarav
-
                     </p>
-
-                    <p className="text-sm text-white/50">
-
+                    <p className="text-sm text-[#6A827C]">
                       Wellness Score
-
                     </p>
-
                   </div>
-
                 </div>
 
                 <div className="mt-14 space-y-5">
-
                   {[
                     "Dashboard",
                     "Assessment",
@@ -177,170 +128,117 @@ export default function DashboardSection() {
                     "Programs",
                     "AI Coach",
                     "Reports",
-                  ].map((item,i)=>(
+                  ].map((item, i) => (
                     <motion.div
-
                       key={item}
-
                       whileHover={{
-                        x:8,
+                        x: 8,
                       }}
-
                       className={`flex cursor-pointer items-center justify-between rounded-xl px-4 py-3 transition ${
-                        i===0
-                          ? "bg-[#7EF2C8]/10 text-[#7EF2C8]"
-                          : "text-white/60 hover:bg-white/5"
+                        i === 0
+                          ? "bg-[#4A6B53]/10 text-[#4A6B53]"
+                          : "text-[#55665A] hover:bg-[#EAF2EC]"
                       }`}
-
                     >
-
                       <span>
-
                         {item}
-
                       </span>
-
                       <ArrowUpRight
                         weight="bold"
                         size={16}
                       />
-
                     </motion.div>
                   ))}
-
                 </div>
-
               </div>
 
-
-
               {/* Main Dashboard */}
-
               <div className="p-6 sm:p-8">
-
                 <div className="grid gap-6 md:grid-cols-2">
-
-                  {cards.map((card,i)=>{
-
-                    const Icon=card.icon;
-
-                    return(
-
+                  {cards.map((card, i) => {
+                    const Icon = card.icon;
+                    return (
                       <motion.div
-
                         key={card.title}
-
                         initial={{
-                          opacity:0,
-                          y:30,
+                          opacity: 0,
+                          y: 30,
                         }}
-
                         whileInView={{
-                          opacity:1,
-                          y:0,
+                          opacity: 1,
+                          y: 0,
                         }}
-
                         viewport={{
-                          once:true,
+                          once: true,
                         }}
-
                         transition={{
-                          delay:i*.12,
+                          delay: i * .12,
                         }}
-
                         whileHover={{
-                          y:-6,
+                          y: -6,
                         }}
-
-                        className="group rounded-[28px] border border-white/10 bg-white/[0.03] p-6 transition-colors duration-300 hover:border-[#7EF2C8]/30 hover:bg-white/[0.05] sm:p-7"
-
+                        className="group rounded-[28px] border border-[#E0E6E1] bg-white p-6 shadow-sm transition-colors duration-300 hover:border-[#4A6B53]/30 sm:p-7"
                       >
-
                         <div className="flex items-center justify-between">
-
                           <div>
-
-                            <p className="uppercase tracking-[0.28em] text-xs text-white/45">
-
+                            <p className="uppercase tracking-[0.28em] text-xs text-[#6A827C]">
                               {card.title}
-
                             </p>
 
-                            <h3 className="mt-5 text-5xl font-light text-white">
-
+                            <h3 className="mt-5 text-5xl font-light text-[#1C3322]">
                               {card.value}
-
                             </h3>
 
                             <p
                               className="mt-4"
                               style={{
-                                color:card.color,
+                                color: card.color,
                               }}
                             >
-
                               {card.subtitle}
-
                             </p>
-
                           </div>
 
                           <div
                             className="flex h-16 w-16 items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110"
                             style={{
-                              background:`${card.color}18`,
+                              background: `${card.color}18`,
                             }}
                           >
-
                             <Icon
                               weight="duotone"
                               size={28}
                               color={card.color}
                             />
-
                           </div>
-
                         </div>
 
-                        <div className="mt-8 h-[2px] rounded-full bg-white/10">
-
+                        <div className="mt-8 h-[2px] rounded-full bg-[#EAF2EC]">
                           <motion.div
-
                             initial={{
-                              width:0,
+                              width: 0,
                             }}
-
                             whileInView={{
-                              width:`${card.score}%`,
+                              width: `${card.score}%`,
                             }}
-
                             viewport={{
-                              once:true,
+                              once: true,
                             }}
-
                             transition={{
-                              duration:1.4,
+                              duration: 1.4,
                             }}
-
-                            className="h-full rounded-full bg-gradient-to-r from-[#7EF2C8] to-[#EFD98B]"
-
+                            className="h-full rounded-full bg-gradient-to-r from-[#4A6B53] to-[#D4B85C]"
                           />
-
                         </div>
-
                       </motion.div>
-
                     )
-
                   })}
-            </div>
+                </div>
 
                 {/* Analytics Row */}
-
                 <div className="mt-8 grid gap-6 lg:grid-cols-[1.6fr_.9fr]">
 
                   {/* Weekly Progress */}
-
                   <motion.div
                     initial={{
                       opacity: 0,
@@ -356,41 +254,29 @@ export default function DashboardSection() {
                     transition={{
                       delay: .5,
                     }}
-                    className="rounded-[30px] border border-white/10 bg-white/[0.03] p-6 sm:p-8"
+                    className="rounded-[30px] border border-[#E0E6E1] bg-white p-6 sm:p-8"
                   >
-
                     <div className="flex items-center justify-between">
-
                       <div>
-
-                        <p className="uppercase tracking-[0.3em] text-xs text-white/45">
-
+                        <p className="uppercase tracking-[0.3em] text-xs text-[#6A827C]">
                           Weekly Wellness Trend
-
                         </p>
-
-                        <h3 className="mt-3 text-3xl text-white">
-
+                        <h3 className="mt-3 text-3xl text-[#1C3322]">
                           AI Progress
-
                         </h3>
-
                       </div>
 
                       <Pulse
                         weight="duotone"
-                        className="text-[#7EF2C8]"
+                        className="text-[#4A6B53]"
                       />
-
                     </div>
 
                     <svg
                       viewBox="0 0 600 220"
                       className="mt-10 w-full"
                     >
-
                       <defs>
-
                         <linearGradient
                           id="dashboardGraph"
                           x1="0%"
@@ -398,18 +284,9 @@ export default function DashboardSection() {
                           x2="100%"
                           y2="0%"
                         >
-                          <stop
-                            offset="0%"
-                            stopColor="#EFD98B"
-                          />
-
-                          <stop
-                            offset="100%"
-                            stopColor="#7EF2C8"
-                          />
-
+                          <stop offset="0%" stopColor="#D4B85C" />
+                          <stop offset="100%" stopColor="#4A6B53" />
                         </linearGradient>
-
                       </defs>
 
                       {[0, 1, 2, 3].map((i) => (
@@ -419,7 +296,7 @@ export default function DashboardSection() {
                           x2="600"
                           y1={40 + i * 45}
                           y2={40 + i * 45}
-                          stroke="rgba(255,255,255,.08)"
+                          stroke="#EAF2EC"
                         />
                       ))}
 
@@ -448,7 +325,7 @@ export default function DashboardSection() {
                         cx="600"
                         cy="38"
                         r="7"
-                        fill="#7EF2C8"
+                        fill="#4A6B53"
                         animate={{
                           scale: [1, 1.6, 1],
                         }}
@@ -457,13 +334,10 @@ export default function DashboardSection() {
                           duration: 1.4,
                         }}
                       />
-
                     </svg>
-
                   </motion.div>
 
                   {/* AI Coach */}
-
                   <motion.div
                     initial={{
                       opacity: 0,
@@ -479,36 +353,29 @@ export default function DashboardSection() {
                     transition={{
                       delay: .7,
                     }}
-                    className="rounded-[30px] border border-white/10 bg-gradient-to-br from-[#0D2A24] to-[#081816] p-6 sm:p-8"
+                    className="rounded-[30px] border border-[#E0E6E1] bg-[#EAF2EC] p-6 sm:p-8"
                   >
-
                     <Brain
                       weight="duotone"
-                      className="text-[#7EF2C8]"
+                      className="text-[#4A6B53]"
                       size={34}
                     />
 
-                    <p className="mt-8 uppercase tracking-[0.3em] text-xs text-white/45">
-
+                    <p className="mt-8 uppercase tracking-[0.3em] text-xs text-[#6A827C]">
                       AI COACH
-
                     </p>
 
-                    <h3 className="mt-4 text-3xl text-white">
-
+                    <h3 className="mt-4 text-3xl text-[#1C3322]">
                       Today's Insight
-
                     </h3>
 
-                    <p className="mt-6 leading-8 text-white/60">
-
+                    <p className="mt-6 leading-8 text-[#55665A]">
                       Based on your recent sleep,
                       stress and nutrition patterns,
                       increasing hydration and taking
                       a short evening walk may improve
                       tomorrow's recovery score by
                       approximately 12%.
-
                     </p>
 
                     <motion.button
@@ -518,25 +385,19 @@ export default function DashboardSection() {
                       whileTap={{
                         scale: .98,
                       }}
-                      className="mt-10 w-full rounded-full bg-[#0F5A4A] py-4 text-white transition-all duration-300 hover:bg-[#126654] hover:shadow-[0_18px_40px_-12px_rgba(15,90,74,.8)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#081816]"
+                      className="mt-10 w-full rounded-full bg-[#4A6B53] py-4 text-white transition-all duration-300 hover:bg-[#3D5A46] hover:shadow-[0_18px_40px_-12px_rgba(74,107,83,.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A6B53]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#EAF2EC]"
                     >
                       Open AI Coach
                     </motion.button>
-
                   </motion.div>
 
                 </div>
-
               </div>
-
             </div>
-
           </div>
-
         </motion.div>
 
         {/* Bottom Stats */}
-
         <motion.div
           initial={{
             opacity: 0,
@@ -554,39 +415,27 @@ export default function DashboardSection() {
           }}
           className="mt-16 grid grid-cols-2 gap-4 sm:gap-8 md:grid-cols-4"
         >
-
           {[
             ["97%", "Prediction Accuracy"],
             ["24/7", "AI Monitoring"],
             ["50+", "Health Biomarkers"],
             ["5000+", "Ayurvedic Knowledge"],
           ].map(([value, label]) => (
-
             <div
               key={label}
-              className="rounded-[26px] border border-white/10 bg-white/[0.03] p-6 text-center transition-colors duration-300 hover:border-[#7EF2C8]/30 hover:bg-white/[0.05] sm:p-8"
+              className="rounded-[26px] border border-[#E0E6E1] bg-white p-6 text-center shadow-sm transition-colors duration-300 hover:border-[#4A6B53]/30 sm:p-8"
             >
-
-              <h3 className="text-5xl font-light bg-gradient-to-r from-[#EFD98B] to-[#7EF2C8] bg-clip-text text-transparent">
-
+              <h3 className="text-5xl font-light bg-gradient-to-r from-[#D4B85C] to-[#4A6B53] bg-clip-text text-transparent">
                 {value}
-
               </h3>
-
-              <p className="mt-4 text-white/60">
-
+              <p className="mt-4 text-[#55665A]">
                 {label}
-
               </p>
-
             </div>
-
           ))}
-
         </motion.div>
 
       </div>
-
     </section>
   );
 }

@@ -11,24 +11,37 @@ const assurances = [
 
 export default function CTA() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#071513] via-[#06120F] to-slate-950 py-28">
-      {/* Top transition from light Testimonials */}
+    <section className="relative overflow-hidden bg-[#F9F9F6] py-28">
+  {/* Radial mint-grain texture background */}
+  <div
+    className="absolute inset-0"
+    style={{
+      backgroundImage: `radial-gradient(ellipse 60% 55% at 50% 50%, #A9CBB0 0%, #C9DECD 35%, #E9F1EA 65%, #F9F9F6 100%)`,
+    }}
+  />
+  <div
+    className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none"
+    style={{
+      backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+    }}
+  />
+      {/* Top transition from Testimonials */}
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#F5F5F1] to-transparent pointer-events-none z-10" />
 
-      {/* Glows */}
+      {/* Soft tint */}
       <motion.div
-        animate={{ scale: [1, 1.12, 1], opacity: [0.18, 0.32, 0.18] }}
+        animate={{ scale: [1, 1.12, 1], opacity: [0.06, 0.12, 0.06] }}
         transition={{ duration: 10, repeat: Infinity }}
-        className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#7EF2C8]/12 blur-[160px]"
+        className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#4A6B53]/10 blur-[160px]"
       />
 
       {/* Floating particles */}
       {[...Array(10)].map((_, i) => (
         <motion.div
           key={i}
-          animate={{ y: [0, -28, 0], opacity: [0.15, 0.7, 0.15] }}
+          animate={{ y: [0, -28, 0], opacity: [0.1, 0.4, 0.1] }}
           transition={{ duration: 6 + (i % 5), delay: i * 0.3, repeat: Infinity }}
-          className="absolute h-[3px] w-[3px] rounded-full bg-emerald-300"
+          className="absolute h-[3px] w-[3px] rounded-full bg-[#4A6B53]"
           style={{ left: `${8 + i * 9}%`, top: `${20 + (i % 4) * 18}%` }}
         />
       ))}
@@ -40,14 +53,14 @@ export default function CTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-serif text-5xl leading-tight text-white md:text-7xl">
+          <h2 className="font-serif text-5xl leading-tight text-[#1C3322] md:text-7xl">
             Begin Your Journey to
-            <span className="block bg-gradient-to-r from-[#EFD98B] via-white to-[#7EF2C8] bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-[#D4B85C] via-[#4A6B53] to-[#0C6C57] bg-clip-text text-transparent">
               Effortless Wellness
             </span>
           </h2>
 
-          <p className="mx-auto mt-8 max-w-2xl text-lg leading-9 text-white/65">
+          <p className="mx-auto mt-8 max-w-2xl text-lg leading-9 text-[#55665A]">
             Join thousands who have transformed their health with the world's
             first precision Ayurveda + AI platform. Your body already knows —
             let us help you understand it.
@@ -58,7 +71,7 @@ export default function CTA() {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              className="group flex w-full items-center justify-center gap-2 rounded-full bg-[#0F5A4A] px-9 py-4 text-white shadow-lg transition-all duration-300 hover:bg-[#126654] hover:shadow-[0_18px_40px_-12px_rgba(15,90,74,.8)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#06120F] sm:w-auto"
+              className="group flex w-full items-center justify-center gap-2 rounded-full bg-[#4A6B53] px-9 py-4 text-white shadow-lg transition-all duration-300 hover:bg-[#3D5A46] hover:shadow-[0_18px_40px_-12px_rgba(74,107,83,.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A6B53]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F9F9F6] sm:w-auto"
             >
               Start Your Journey
               <ArrowRight weight="bold" size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
@@ -67,7 +80,7 @@ export default function CTA() {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full rounded-full border border-white/25 bg-white/10 px-9 py-4 text-white backdrop-blur-md transition-colors duration-300 hover:border-white/40 hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#06120F] sm:w-auto"
+              className="w-full rounded-full border border-[#D7E4DF] bg-white px-9 py-4 text-[#1C3322] transition-colors duration-300 hover:border-[#4A6B53]/40 hover:bg-[#EAF2EC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A6B53]/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F9F9F6] sm:w-auto"
             >
               Talk to an Expert
             </motion.button>
@@ -84,10 +97,10 @@ export default function CTA() {
           </div>
 
           {/* Assurances */}
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-white/55">
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-[#55665A]">
             {assurances.map((item) => (
               <div key={item} className="flex items-center gap-2">
-                <ShieldCheck weight="duotone" className="h-4 w-4 text-emerald-300" />
+                <ShieldCheck weight="duotone" className="h-4 w-4 text-[#4A6B53]" />
                 {item}
               </div>
             ))}

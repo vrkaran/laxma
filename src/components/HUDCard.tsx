@@ -122,7 +122,8 @@ export default function HUDCard({
         border-transparent
         bg-[rgba(3,15,12,.08)]
         backdrop-blur-[2px]
-        p-6
+        p-4
+        sm:p-6
         overflow-hidden
         transition-colors
         duration-300
