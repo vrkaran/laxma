@@ -200,7 +200,14 @@ export default function ProgramsSection() {
           >
 
             {/* Floating tint */}
-            <div className="absolute h-[420px] w-[420px] rounded-full bg-[#4A6B53]/10 blur-[130px]" />
+            {/* Floating textured glow */}
+            <div
+              className="absolute h-[420px] w-[420px] rounded-full"
+              style={{
+                backgroundImage: `radial-gradient(ellipse 55% 55% at 50% 50%, #A9CBB0 0%, #C9DECD 35%, transparent 70%)`,
+                filter: "blur(40px)",
+              }}
+            />
 
             {/* Phone */}
             <motion.div

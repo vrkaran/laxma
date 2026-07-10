@@ -211,7 +211,14 @@ export default function StorySection() {
             className="relative hidden lg:flex items-center justify-center h-[520px]"
           >
             {/* Soft tint */}
-            <div className="absolute h-72 w-72 rounded-full bg-[#4A6B53]/5 blur-[120px]" />
+            {/* Textured glow */}
+            <div
+              className="absolute h-72 w-72 rounded-full overflow-hidden"
+              style={{
+                backgroundImage: `radial-gradient(ellipse 60% 60% at 50% 50%, #A9CBB0 0%, #C9DECD 40%, transparent 75%)`,
+                filter: "blur(20px)",
+              }}
+            />
 
             {/* Line */}
             <motion.div

@@ -338,7 +338,7 @@ export default function DashboardSection() {
                   </motion.div>
 
                   {/* AI Coach */}
-                  <motion.div
+<motion.div
                     initial={{
                       opacity: 0,
                       y: 30,
@@ -353,8 +353,21 @@ export default function DashboardSection() {
                     transition={{
                       delay: .7,
                     }}
-                    className="rounded-[30px] border border-[#E0E6E1] bg-[#EAF2EC] p-6 sm:p-8"
+                    className="relative overflow-hidden rounded-[30px] border border-[#E0E6E1] p-6 sm:p-8"
                   >
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        backgroundImage: `radial-gradient(ellipse 80% 70% at 50% 40%, #A9CBB0 0%, #C9DECD 40%, #EAF2EC 75%, #EAF2EC 100%)`,
+                      }}
+                    />
+                    <div
+                      className="absolute inset-0 opacity-[0.12] mix-blend-overlay pointer-events-none"
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+                      }}
+                    />
+                    <div className="relative z-10">
                     <Brain
                       weight="duotone"
                       className="text-[#4A6B53]"
@@ -389,6 +402,7 @@ export default function DashboardSection() {
                     >
                       Open AI Coach
                     </motion.button>
+                    </div>
                   </motion.div>
 
                 </div>

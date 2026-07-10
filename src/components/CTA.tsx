@@ -55,7 +55,7 @@ export default function CTA() {
         >
           <h2 className="font-serif text-5xl leading-tight text-[#1C3322] md:text-7xl">
             Begin Your Journey to
-            <span className="block bg-gradient-to-r from-[#D4B85C] via-[#4A6B53] to-[#0C6C57] bg-clip-text text-transparent">
+            <span className="block text-black-600">
               Effortless Wellness
             </span>
           </h2>
