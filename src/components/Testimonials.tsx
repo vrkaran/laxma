@@ -9,7 +9,7 @@ const testimonials = [
       "My gut issues vanished within weeks. The AI kept adjusting my plan until my body actually felt balanced — something no doctor managed before.",
     metric: "−9 kg",
     metricLabel: "in 3 months",
-    gradient: "from-[#7EF2C8] to-[#0C6C57]",
+    gradient: "from-[#4A6B53] to-[#0C6C57]",
   },
   {
     name: "Rohan Mehta",
@@ -18,7 +18,7 @@ const testimonials = [
       "I was skeptical about Ayurveda and AI together. But my sleep score went from 60% to 92%, and I finally wake up genuinely rested.",
     metric: "92%",
     metricLabel: "sleep score",
-    gradient: "from-[#84D8FF] to-[#1E6FA6]",
+    gradient: "from-[#7FA6C4] to-[#1E6FA6]",
   },
   {
     name: "Priya Nair",
@@ -27,7 +27,7 @@ const testimonials = [
       "It feels like a companion that truly knows my body. The dosha insights and daily nudges are scarily accurate and deeply personal.",
     metric: "+34%",
     metricLabel: "vitality",
-    gradient: "from-[#EFD98B] to-[#C99B2E]",
+    gradient: "from-[#D4B85C] to-[#B8862E]",
   },
 ];
 
@@ -40,11 +40,11 @@ const stats = [
 export default function Testimonials() {
   return (
     <section className="relative overflow-hidden bg-[#F5F5F1] py-24">
-      {/* Background glow */}
+      {/* Background tint */}
       <motion.div
-        animate={{ scale: [1, 1.08, 1], opacity: [0.12, 0.22, 0.12] }}
+        animate={{ scale: [1, 1.08, 1], opacity: [0.08, 0.15, 0.08] }}
         transition={{ duration: 11, repeat: Infinity }}
-        className="absolute left-0 top-24 h-[460px] w-[460px] rounded-full bg-emerald-300/20 blur-[150px]"
+        className="absolute left-0 top-24 h-[460px] w-[460px] rounded-full bg-[#4A6B53]/10 blur-[150px]"
       />
 
       <div className="relative z-20 mx-auto max-w-7xl px-6">
@@ -56,7 +56,7 @@ export default function Testimonials() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <h2 className="font-serif text-5xl leading-tight text-[#09231E] md:text-6xl">
+          <h2 className="font-serif text-5xl leading-tight text-[#1C3322] md:text-6xl">
             Health Journeys
             <span className="block bg-gradient-to-r from-[#0C6C57] to-[#D4B85C] bg-clip-text text-transparent">
               Worth Sharing
@@ -89,7 +89,7 @@ export default function Testimonials() {
                   <Star
                     key={s}
                     weight="fill"
-                    className="h-4 w-4 text-[#EFB100]"
+                    className="h-4 w-4 text-[#D4B85C]"
                   />
                 ))}
               </div>
@@ -107,7 +107,7 @@ export default function Testimonials() {
                     {t.name.charAt(0)}
                   </div>
                   <div>
-                    <p className="font-medium text-[#09231E]">{t.name}</p>
+                    <p className="font-medium text-[#1C3322]">{t.name}</p>
                     <p className="text-sm text-[#5B746E]">{t.role}</p>
                   </div>
                 </div>

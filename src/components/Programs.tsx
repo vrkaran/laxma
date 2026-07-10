@@ -16,21 +16,21 @@ const programs = [
     duration: "21 Days",
     success: "94%",
     icon: Moon,
-    color: "#84D8FF",
+    color: "#7FA6C4",
   },
   {
     title: "Stress Balance",
     duration: "28 Days",
     success: "91%",
     icon: Brain,
-    color: "#7EF2C8",
+    color: "#4A6B53",
   },
   {
     title: "Gut Restore",
     duration: "30 Days",
     success: "96%",
     icon: Leaf,
-    color: "#EFD98B",
+    color: "#D4B85C",
   },
 ];
 
@@ -39,21 +39,19 @@ export default function ProgramsSection() {
     <section className="relative overflow-hidden bg-[#F5F5F1] py-24">
 
       {/* Transition */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#F9F9F6] to-[#F5F5F1] pointer-events-none z-10" />
 
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#071513] to-[#F5F5F1] pointer-events-none z-10" />
-
-      {/* Background Glow */}
-
+      {/* Background tint */}
       <motion.div
         animate={{
           scale: [1, 1.08, 1],
-          opacity: [.15, .25, .15],
+          opacity: [.08, .15, .08],
         }}
         transition={{
           duration: 10,
           repeat: Infinity,
         }}
-        className="absolute right-0 top-32 h-[500px] w-[500px] rounded-full bg-emerald-300/20 blur-[150px]"
+        className="absolute right-0 top-32 h-[500px] w-[500px] rounded-full bg-[#4A6B53]/10 blur-[150px]"
       />
 
       <div className="relative z-20 mx-auto max-w-7xl px-6">
@@ -61,7 +59,6 @@ export default function ProgramsSection() {
         <div className="grid items-center gap-20 lg:grid-cols-[1fr_560px]">
 
           {/* LEFT */}
-
           <motion.div
             initial={{
               opacity: 0,
@@ -79,34 +76,26 @@ export default function ProgramsSection() {
             }}
           >
 
-            <h2 className="font-serif text-4xl leading-tight text-[#09231E] sm:text-5xl md:text-6xl">
-
+            <h2 className="font-serif text-4xl leading-tight text-[#1C3322] sm:text-5xl md:text-6xl">
               Personalized
               <span className="block bg-gradient-to-r from-[#0C6C57] to-[#D4B85C] bg-clip-text text-transparent">
-
                 Wellness Programs
-
               </span>
-
             </h2>
 
             <p className="mt-8 max-w-xl text-lg leading-9 text-[#48635D]">
-
               Every recommendation adapts to your body,
               habits and goals. Our AI continuously
               improves each wellness program based on
               your progress.
-
             </p>
 
             <div className="mt-16 space-y-8">
-
               {programs.map((program, index) => {
 
                 const Icon = program.icon;
 
                 return (
-
                   <motion.div
                     key={program.title}
                     initial={{
@@ -145,25 +134,18 @@ export default function ProgramsSection() {
                       </div>
 
                       <div>
-
-                        <h3 className="text-2xl font-medium text-[#09231E]">
-
+                        <h3 className="text-2xl font-medium text-[#1C3322]">
                           {program.title}
-
                         </h3>
 
                         <p className="mt-2 text-[#5B746E]">
-
                           {program.duration}
-
                         </p>
-
                       </div>
 
                     </div>
 
                     <div className="text-right">
-
                       <p
                         className="text-3xl font-light"
                         style={{
@@ -174,19 +156,13 @@ export default function ProgramsSection() {
                       </p>
 
                       <p className="text-sm text-[#5B746E]">
-
                         Success Rate
-
                       </p>
-
                     </div>
 
                   </motion.div>
-
                 );
-
               })}
-
             </div>
 
             <motion.button
@@ -196,21 +172,15 @@ export default function ProgramsSection() {
               whileTap={{
                 scale: .98,
               }}
-              className="group mt-16 flex items-center gap-3 rounded-full bg-[#0C6C57] px-8 py-4 text-white shadow-lg transition-all duration-300 hover:bg-[#0a5849] hover:shadow-[0_18px_40px_-12px_rgba(12,108,87,.7)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0C6C57]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F5F1]"
+              className="group mt-16 flex items-center gap-3 rounded-full bg-[#4A6B53] px-8 py-4 text-white shadow-lg transition-all duration-300 hover:bg-[#3D5A46] hover:shadow-[0_18px_40px_-12px_rgba(74,107,83,.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A6B53]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F5F1]"
             >
-
               Explore All Programs
-
               <ArrowRight weight="bold" size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
-
             </motion.button>
 
           </motion.div>
 
-
-
           {/* PHONE */}
-
           <motion.div
             initial={{
               opacity: 0,
@@ -229,12 +199,17 @@ export default function ProgramsSection() {
             className="relative flex justify-center"
           >
 
-            {/* Floating Glow */}
-
-            <div className="absolute h-[420px] w-[420px] rounded-full bg-emerald-300/20 blur-[130px]" />
+            {/* Floating tint */}
+            {/* Floating textured glow */}
+            <div
+              className="absolute h-[420px] w-[420px] rounded-full"
+              style={{
+                backgroundImage: `radial-gradient(ellipse 55% 55% at 50% 50%, #A9CBB0 0%, #C9DECD 35%, transparent 70%)`,
+                filter: "blur(40px)",
+              }}
+            />
 
             {/* Phone */}
-
             <motion.div
               animate={{
                 y: [0, -12, 0],
@@ -243,67 +218,49 @@ export default function ProgramsSection() {
                 duration: 4,
                 repeat: Infinity,
               }}
-              className="relative h-[620px] w-[290px] rounded-[46px] border-[10px] border-[#111] bg-[#081816] shadow-[0_50px_120px_rgba(0,0,0,.25)] sm:h-[700px] sm:w-[340px]"
+              className="relative h-[620px] w-[290px] rounded-[46px] border-[10px] border-[#0C6C57] bg-[#EAF2EC] shadow-[0_50px_120px_rgba(0,0,0,.12)] sm:h-[700px] sm:w-[340px]"
             >
 
               {/* Dynamic Island */}
-
-              <div className="absolute left-1/2 top-4 h-7 w-32 -translate-x-1/2 rounded-full bg-black" />
+              <div className="absolute left-1/2 top-4 h-7 w-32 -translate-x-1/2 rounded-full bg-[#1C3322]" />
 
               {/* Screen */}
-
               <div className="p-7 pt-14">
 
                 <div className="flex items-center justify-between">
-
                   <div>
-
-                    <p className="text-white/50">
-
+                    <p className="text-[#6A827C]">
                       Good Morning,
-
                     </p>
 
-                    <h3 className="mt-1 text-3xl text-white">
-
+                    <h3 className="mt-1 text-3xl text-[#1C3322]">
                       Aarav 👋
-
                     </h3>
-
                   </div>
 
                   <Heartbeat
                     weight="duotone"
-                    className="text-[#7EF2C8]"
+                    className="text-[#4A6B53]"
                   />
-
                 </div>
 
-                <div className="mt-10 rounded-[28px] bg-gradient-to-br from-[#0D4035] to-[#0B2B25] p-7">
-
-                  <p className="uppercase tracking-[0.3em] text-xs text-[#7EF2C8]">
-
+                <div className="mt-10 rounded-[28px] bg-white p-7 border border-[#D7E4DF]">
+                  <p className="uppercase tracking-[0.3em] text-xs text-[#4A6B53]">
                     TODAY
-
                   </p>
 
-                  <h3 className="mt-4 text-4xl text-white">
-
+                  <h3 className="mt-4 text-4xl text-[#1C3322]">
                     Sleep Reset
-
                   </h3>
 
-                  <p className="mt-4 text-white/60 leading-8">
-
+                  <p className="mt-4 text-[#5B746E] leading-8">
                     Day 12 of 21
-
                   </p>
-
                 </div>
 
                 <div className="mt-8 grid grid-cols-2 gap-4">
 
-                                  {([
+                  {([
                     ["Sleep", "92%", Moon],
                     ["Vitality", "87", Pulse],
                     ["Protected", "100%", ShieldCheck],
@@ -332,27 +289,21 @@ export default function ProgramsSection() {
                           y: -6,
                           scale: 1.03,
                         }}
-                        className="rounded-2xl border border-white/10 bg-white/[0.04] p-5"
+                        className="rounded-2xl border border-[#D7E4DF] bg-white p-5"
                       >
-
                         <CardIcon
                           weight="duotone"
-                          className="text-[#7EF2C8]"
+                          className="text-[#4A6B53]"
                           size={22}
                         />
 
-                        <p className="mt-5 text-3xl text-white">
-
+                        <p className="mt-5 text-3xl text-[#1C3322]">
                           {value}
-
                         </p>
 
-                        <p className="mt-2 text-sm text-white/55">
-
+                        <p className="mt-2 text-sm text-[#6A827C]">
                           {title}
-
                         </p>
-
                       </motion.div>
                     );
                   })}
@@ -360,27 +311,18 @@ export default function ProgramsSection() {
                 </div>
 
                 {/* Progress */}
-
-                <div className="mt-8 rounded-[26px] bg-white/[0.04] p-6">
-
+                <div className="mt-8 rounded-[26px] bg-white border border-[#D7E4DF] p-6">
                   <div className="flex items-center justify-between">
-
-                    <p className="text-white">
-
+                    <p className="text-[#1C3322]">
                       Weekly Progress
-
                     </p>
 
-                    <span className="text-[#7EF2C8]">
-
+                    <span className="text-[#4A6B53]">
                       +18%
-
                     </span>
-
                   </div>
 
-                  <div className="mt-6 h-[8px] rounded-full bg-white/10">
-
+                  <div className="mt-6 h-[8px] rounded-full bg-[#EAF2EC]">
                     <motion.div
                       initial={{
                         width: 0,
@@ -394,11 +336,9 @@ export default function ProgramsSection() {
                       transition={{
                         duration: 1.5,
                       }}
-                      className="h-full rounded-full bg-gradient-to-r from-[#7EF2C8] to-[#EFD98B]"
+                      className="h-full rounded-full bg-gradient-to-r from-[#4A6B53] to-[#D4B85C]"
                     />
-
                   </div>
-
                 </div>
 
               </div>
@@ -406,7 +346,6 @@ export default function ProgramsSection() {
             </motion.div>
 
             {/* Floating Card 1 */}
-
             <motion.div
               animate={{
                 y: [0, -10, 0],
@@ -418,29 +357,20 @@ export default function ProgramsSection() {
               }}
               className="absolute -left-8 top-24 hidden rounded-[26px] border border-[#DCE5E1] bg-white p-5 shadow-[0_25px_60px_rgba(0,0,0,.08)] sm:block"
             >
-
               <p className="text-xs uppercase tracking-[0.28em] text-[#6A827C]">
-
                 AI Recommendation
-
               </p>
 
-              <h4 className="mt-3 text-xl text-[#09231E]">
-
+              <h4 className="mt-3 text-xl text-[#1C3322]">
                 Ashwagandha
-
               </h4>
 
               <p className="mt-2 text-[#5B746E]">
-
                 Evening • 500mg
-
               </p>
-
             </motion.div>
 
             {/* Floating Card 2 */}
-
             <motion.div
               animate={{
                 y: [0, 12, 0],
@@ -452,25 +382,17 @@ export default function ProgramsSection() {
               }}
               className="absolute -right-10 bottom-20 hidden rounded-[26px] border border-[#DCE5E1] bg-white p-6 shadow-[0_25px_60px_rgba(0,0,0,.08)] sm:block"
             >
-
               <p className="text-xs uppercase tracking-[0.28em] text-[#6A827C]">
-
                 Recovery
-
               </p>
 
               <h4 className="mt-3 text-4xl text-[#0C6C57]">
-
                 94%
-
               </h4>
 
               <p className="mt-2 text-[#5B746E]">
-
                 Excellent Progress
-
               </p>
-
             </motion.div>
 
           </motion.div>
