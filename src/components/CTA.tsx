@@ -86,16 +86,7 @@ export default function CTA() {
             </motion.button>
           </div>
 
-          {/* App badges */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <a href="#" className="transition-transform hover:scale-105">
-              <img src={appstoreImg} alt="Download on the App Store" className="h-12 w-auto" />
-            </a>
-            <a href="#" className="transition-transform hover:scale-105">
-              <img src={playstoreImg} alt="Get it on Google Play" className="h-12 w-auto" />
-            </a>
-          </div>
-
+          
           {/* Assurances */}
           <div className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-[#55665A]">
             {assurances.map((item) => (
