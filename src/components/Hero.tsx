@@ -168,69 +168,70 @@ export default function Hero() {
 {/* ================= MOBILE / TABLET (below lg) ================= */}
 <div className="lg:hidden relative overflow-hidden">
 
-  {/* ---- TOP: solid bg, ONLY the badge lives here ---- */}
-  <div className="relative z-10 bg-[#F9F9F6] px-5 pt-24 pb-6 sm:px-6">
+  {/* ---- TOP: solid bg, all text lives here, fully readable ---- */}
+  <div className="relative z-10 bg-[#F9F9F6] px-5 pt-28 pb-6 sm:px-6">
     <motion.div
-      initial={{ opacity: 0, y: 15 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.7 }}
       className="mx-auto max-w-md text-center"
     >
-      <div className="inline-flex items-center gap-2 rounded-full border border-[#E0E6E1] bg-white px-4 py-2 shadow-sm">
+      {/* Badge */}
+      <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#E0E6E1] bg-white px-4 py-2 shadow-sm">
         <Sparkle weight="fill" className="h-3.5 w-3.5 text-[#4A6B53]" />
         <span className="text-[11px] font-medium tracking-wide text-[#1C3322]">
           Precision Ayurveda + AI
         </span>
       </div>
-    </motion.div>
-  </div>
 
-  {/* ---- IMAGE ZONE: title, tagline, description sit on the image with a dark scrim ---- */}
-  <div className="relative h-[620px] sm:h-[700px]">
-    <img
-      src={heroBgMobile1}
-      alt="AyurGenX"
-      className="absolute inset-0 h-full w-full object-cover object-[center_18%]"
-    />
-
-    {/* Dark scrim behind the text block only, so it stays readable over the image */}
-    <div className="absolute inset-x-0 top-0 h-[260px] bg-gradient-to-b from-black/55 via-black/25 to-transparent" />
-
-    {/* Tiny seam blend from the white badge block above */}
-    <div className="absolute inset-x-0 top-0 h-6 bg-gradient-to-b from-[#F9F9F6] to-transparent" />
-
-    {/* Minimal fade at bottom edge — just enough to blend into next block */}
-    <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-[#F9F9F6]/70 to-transparent" />
-
-    {/* Text content, on the image */}
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.15, duration: 0.7 }}
-      className="relative z-10 mx-auto max-w-md px-5 pt-8 text-center sm:px-6"
-    >
-      <h1 className="font-serif text-[2.75rem] leading-none tracking-[-0.03em] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,.35)]">
+      {/* Title */}
+      <h1 className="font-serif text-[2.75rem] leading-none tracking-[-0.03em] bg-gradient-to-b from-[#0C6C57] via-[#4A6B53] to-[#D4B85C] bg-clip-text text-transparent">
         AyurGenX™
       </h1>
 
       <div className="mx-auto mt-3 h-px w-40 bg-gradient-to-r from-transparent via-[#D4B85C] to-transparent" />
 
-      <p className="mt-2 text-[10px] uppercase tracking-[0.28em] text-white/85">
+      <p className="mt-2 text-[10px] uppercase tracking-[0.28em] text-[#55665A]">
         Predict • Prevent • Personalize
       </p>
 
-      <p className="mt-5 text-[14px] leading-6 text-white/90">
+      {/* Description — now on solid bg, fully readable */}
+      <p className="mt-5 text-[14px] leading-6 text-[#55665A]">
         AyurGenX combines 5000+ years of Ayurvedic knowledge with
         cutting-edge AI to build your truly personalized health journey.
       </p>
     </motion.div>
+  </div>
+
+  {/* ---- MIDDLE: the image, breathing, minimal fade ---- */}
+{/* ---- MIDDLE: the image, breathing, smooth fade ---- */}
+  <div className="relative h-[340px] sm:h-[400px]">
+    <img
+      src={heroBgMobile1}
+      alt="AyurGenX"
+      className="absolute inset-0 h-full w-full object-cover object-[center_22%]"
+    />
+    {/* smooth multi-stop fade at top, blends gradually into the text block above */}
+        <div
+          className="absolute inset-x-0 top-0 h-12"
+          style={{
+            background: "linear-gradient(to bottom, #F9F9F6 0%, rgba(249,249,246,0.75) 35%, rgba(249,249,246,0.35) 65%, transparent 100%)",
+          }}
+        />
+    {/* smooth multi-stop fade at bottom, gentle blend into next block */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-16"
+          style={{
+            background: "linear-gradient(to top, #F9F9F6 0%, rgba(249,249,246,0.7) 35%, rgba(249,249,246,0.3) 65%, transparent 100%)",
+          }}
+        />
 
     {/* Vitality chip, floating on the image */}
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.35 }}
-      className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 rounded-full border border-[#E0E6E1] bg-white px-4 py-2 shadow-md"
+      transition={{ delay: 0.3 }}
+      className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2 rounded-full border border-[#E0E6E1] bg-white px-4 py-2 shadow-md"
     >
       <Pulse weight="duotone" className="h-4 w-4 text-[#4A6B53]" />
       <span className="text-sm font-semibold text-[#1C3322]">87 Vitality Score</span>
