@@ -343,44 +343,44 @@ export default function StorySection() {
               duration: .7,
             }}
           >
-            <div className="flex flex-row-reverse items-center justify-start gap-4 rounded-xl border border-[#E0E6E1] bg-white px-5 py-4 shadow-sm transition-all duration-300 hover:border-[#4A6B53]/40 hover:shadow-md lg:flex-row lg:justify-end">
-              <div className="text-left lg:text-right">
-                <p className="text-xs font-medium uppercase tracking-[0.4em] text-[#4A6B53]">
-                  Artificial Intelligence
-                </p>
-                <h3 className="mt-2 text-3xl font-serif text-[#1C3322]">
-                  AI Understands.
-                </h3>
-              </div>
-
-              <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#4A6B53]/30 bg-[#4A6B53]/10">
-                <Brain weight="duotone" className="h-8 w-8 text-[#4A6B53]" />
-              </div>
+          <div className="flex items-center justify-start gap-4 rounded-xl border border-[#E0E6E1] bg-white px-5 py-4 shadow-sm transition-all duration-300 hover:border-[#4A6B53]/40 hover:shadow-md lg:flex-row-reverse lg:justify-end">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#4A6B53]/30 bg-[#4A6B53]/10 shrink-0">
+              <Brain weight="duotone" className="h-8 w-8 text-[#4A6B53]" />
             </div>
+
+            <div className="text-left lg:text-right">
+              <p className="text-xs font-medium uppercase tracking-[0.4em] text-[#4A6B53]">
+                Artificial Intelligence
+              </p>
+              <h3 className="mt-2 text-3xl font-serif text-[#1C3322]">
+                AI Understands.
+              </h3>
+            </div>
+          </div>
 
             <div className="mt-12 space-y-8">
               {ai.map((item, i) => (
-                <motion.div
-                  key={item}
-                  initial={{
-                    opacity: 0,
-                    x: 30,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    x: 0,
-                  }}
-                  viewport={{ once: true }}
-                  transition={{
-                    delay: .3 + i * .15,
-                  }}
-                  className="flex flex-row-reverse items-center justify-start gap-5 lg:flex-row lg:justify-end"
-                >
-                  <p className="text-lg text-left text-[#37524C] lg:text-right">
-                    {item}
-                  </p>
-                  <div className="h-2 w-2 rounded-full bg-[#4A6B53]" />
-                </motion.div>
+              <motion.div
+                key={item}
+                initial={{
+                  opacity: 0,
+                  x: 30,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  x: 0,
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  delay: .3 + i * .15,
+                }}
+                className="flex items-center justify-start gap-5 lg:flex-row-reverse lg:justify-start"
+              >
+                <div className="h-2 w-2 rounded-full bg-[#4A6B53] shrink-0" />
+                <p className="text-lg text-left text-[#37524C] lg:text-right">
+                  {item}
+                </p>
+              </motion.div>
               ))}
             </div>
           </motion.div>
