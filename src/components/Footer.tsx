@@ -1,14 +1,13 @@
-import { Heart, Twitter, Facebook, Instagram, Linkedin, Youtube, MapPin, Phone, Mail, Shield, Apple, Play } from 'lucide-react';
+import { Instagram, Twitter, Youtube, Linkedin, MapPin, Phone, Mail, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import playstoreImg from '../image/icon/playstore.webp';
 import appstoreImg from '../image/icon/appstore.webp';
-import logoImg from '../image/icon/logo.webp'; 
+import logoImg from '../image/icon/logo.webp';
 
 const footerLinks = {
-  Company: ['Home', 'About Us', 'Contact', 'Careers', 'Blog'],
-  Product: ['AyurGenX Store', 'How It Works', 'Pricing', 'Download App'],
-  Support: ['Help Center', 'Privacy Policy', 'Terms of Service', 'FAQ'],
-  Resources: ['Health Library', 'Success Stories', 'Expert Advice', 'Community'],
+  Company: ['About Us', 'Blog', 'Careers', 'Contact Us'],
+  Offerings: ['AyurGenX Store', 'Membership Plans', "Women's Wellness", 'Preventive Programs'],
+  Opportunities: ['AyurGenX Hackathon', 'Campus Ambassador', 'Partner With Us'],
 };
 
 const socialLinks = [
@@ -22,7 +21,7 @@ export default function Footer() {
   return (
     <footer id="contact" className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-900 pt-16 pb-10 text-slate-300">
       <div className="max-w-7xl mx-auto px-6">
-        
+
         {/* Brand + trust line */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12">
           <div className="flex items-center gap-3">
@@ -35,7 +34,7 @@ export default function Footer() {
             </div>
             <div>
               <div className="text-2xl font-extrabold tracking-tight text-white">AyurGenX</div>
-              <div className="text-[12px] text-slate-400">AI + Ayurveda • Daily Health Coach</div>
+              <div className="text-[12px] text-slate-400">Predict. Prevent. Personalize. Prolong.</div>
             </div>
           </div>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[12px] text-white/80">
@@ -45,28 +44,25 @@ export default function Footer() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 mb-10">
-          
-          {/* Headquarters & Contact */}
+
+          {/* Innovation Office & Contact */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Headquarters</h3>
+            <h3 className="text-white font-semibold mb-4">Innovation Office</h3>
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-0.5 text-white/80" />
                 <p className="text-white/80">
-                  Nirmaan, Sudha & Sankar Innovation Hub, IIT Madras<br/>
+                  Nirmaan, Sudha & Shankar Innovation Hub, IIT Madras<br/>
                   Chennai, Tamil Nadu, India - 600036
                 </p>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-white/80" />
-                <p>
-                  <a href="tel:+918608692978" className="text-white/80 hover:text-white">+91 86086 92978</a>,
-                  <span className="ml-1"><a href="tel:+918608692218" className="text-white/80 hover:text-white">86086 92218</a></span>
-                </p>
+                <a href="tel:+918608692978" className="text-white/80 hover:text-white">+91 86086 92978</a>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-white/80" />
-                <a href="mailto:contact@ayurgenx.com" className="text-white/80 hover:text-white">contact@ayurgenx.in</a>
+                <a href="mailto:support@ayurgenx.in" className="text-white/80 hover:text-white">support@ayurgenx.in</a>
               </div>
             </div>
           </div>
@@ -81,27 +77,27 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Product Links */}
+          {/* Offerings Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Product</h3>
+            <h3 className="text-white font-semibold mb-4">Offerings</h3>
             <ul className="space-y-3 text-white/80">
-              {footerLinks.Product.map((link, index) => (
+              {footerLinks.Offerings.map((link, index) => (
                 <li key={index}><FooterLink label={link} /></li>
               ))}
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Opportunities Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Resources</h3>
+            <h3 className="text-white font-semibold mb-4">Opportunities</h3>
             <ul className="space-y-3 text-white/80">
-              {footerLinks.Resources.map((link, index) => (
+              {footerLinks.Opportunities.map((link, index) => (
                 <li key={index}><FooterLink label={link} /></li>
               ))}
             </ul>
           </div>
 
-          {/* Social Media Section */}
+          {/* App + Social Media Section */}
           <div className="col-span-1 md:col-span-2 xl:col-span-1">
             <h3 className="text-white font-semibold mb-4">Get the App</h3>
             <div className="flex flex-col gap-4">
@@ -134,12 +130,13 @@ export default function Footer() {
         <div className="pt-6 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-white/70">
-              © 2025 AyurGenX Pvt. Ltd. All rights reserved.
+              © 2026 AyurGenX Pvt. Ltd. All rights reserved.
             </p>
-            <div className="flex gap-6 text-sm">
+            <div className="flex flex-wrap justify-center gap-6 text-sm">
               <Link to="/privacy" className="text-white/80 hover:text-white transition-colors">Privacy Policy</Link>
               <Link to="/terms" className="text-white/80 hover:text-white transition-colors">Terms & Conditions</Link>
-              <Link to="/cookies" className="text-white/80 hover:text-white transition-colors">Cookie Policy</Link>
+              <FooterLink label="Medical Disclaimer" />
+              <FooterLink label="Refund Policy" />
             </div>
           </div>
         </div>
@@ -150,24 +147,23 @@ export default function Footer() {
 
 function FooterLink({ label }: { label: string }) {
   const routeMap: Record<string, string> = {
-    'Home': '/',
     'About Us': '/about',
-    'Contact': '/contact',
+    'Contact Us': '/contact',
     'Careers': '/careers',
     'Blog': '/blog',
     'AyurGenX Store': '/store',
-    'How It Works': '/how-it-works',
-    'Pricing': '/pricing',
-    'Download App': '/download',
-    'Health Library': '/library',
-    'Success Stories': '/success-stories',
-    'Expert Advice': '/expert-advice',
-    'Community': '/community',
+    'AyurGenX Hackathon': '/hackathon',
+    'Campus Ambassador': '/ambassador',
+    'Privacy Policy': '/privacy',
+    'Terms & Conditions': '/terms',
   };
-  const to = routeMap[label] ?? '/';
+  const to = routeMap[label];
+
+  if (!to) {
+    return <span className="text-white/40 cursor-default">{label}</span>;
+  }
+
   return (
     <Link to={to} className="hover:text-white transition-colors">{label}</Link>
   );
-
-  
 }
