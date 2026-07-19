@@ -30,25 +30,18 @@ import roleImg3 from "../image/ambassador/role3.jpg";
 import roleImg4 from "../image/ambassador/role4.jpg";
 import roleImg5 from "../image/ambassador/role5.jpg";
 
-/* =========================================================
-   DESIGN TOKENS — light pastel teal / mint system.
-   Reserve `accent` (the neon teal-green) for high-priority
-   focus elements only: the gradient headline word, primary
-   buttons, stat numbers, and success checkmarks. Everything
-   else uses `ink` / `inkSoft` so the neon doesn't get diluted.
-========================================================= */
 const TEAL = {
-  bg: "#F7FAFA",
+  bg: "#F9F9F6",
   bgSoft: "#FFFFFF",
-  bgTint: "#E6F4F1",
+  bgTint: "#EAF2EC",
 
-  accent: "#449B85",
-  accentDeep: "#318B97",
+  accent: "#4A6B53",
+  accentDeep: "#0C6C57",
 
-  ink: "#22686B",
-  inkSoft: "#5B6775",
+  ink: "#1C3322",
+  inkSoft: "#55665A",
 
-  glow: "rgba(68,155,133,0.18)",
+  glow: "rgba(74,107,83,0.18)",
 };
 
 type IconComponent = LucideIcon;
@@ -59,9 +52,6 @@ type IconBadgeProps = { icon: IconComponent; highlight?: boolean };
 type CheckItemProps = { icon: IconComponent; title: string; desc: string };
 type TimelineItemProps = { icon: IconComponent; title: string; desc: string; isLast?: boolean };
 
-/* =========================================================
-   MOTION VARIANTS
-========================================================= */
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
   show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] } },
@@ -71,10 +61,6 @@ const staggerContainer = {
   hidden: {},
   show: { transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
 };
-
-/* =========================================================
-   SMALL REUSABLE PIECES
-========================================================= */
 
 function Eyebrow({ children, color = TEAL.accent, center = false }: EyebrowProps) {
   return (
@@ -102,7 +88,6 @@ function GlowOrb({ className = "", color = TEAL.glow, size = 600 }) {
   );
 }
 
-// Counts up from 0 to `to` once the element scrolls into view.
 function Counter({ to, suffix = "", duration = 2 }: CounterProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
@@ -128,7 +113,6 @@ function Counter({ to, suffix = "", duration = 2 }: CounterProps) {
   );
 }
 
-// White/frosted card used everywhere — Why Join, Stats, Perks, Eligibility.
 function GlassCard({ children, spanClass = "", className = "" }: GlassCardProps) {
   return (
     <motion.div
@@ -138,9 +122,9 @@ function GlassCard({ children, spanClass = "", className = "" }: GlassCardProps)
       className={`relative rounded-[28px] p-8 overflow-hidden group ${spanClass} ${className}`}
       style={{
         background: "rgba(255,255,255,0.75)",
-        border: "1px solid rgba(11,61,58,0.08)",
+        border: "1px solid rgba(28,51,34,0.08)",
         backdropFilter: "blur(16px)",
-        boxShadow: "0 20px 40px rgba(0,180,140,0.07)",
+        boxShadow: "0 20px 40px rgba(74,107,83,0.07)",
       }}
     >
       <div
@@ -156,28 +140,25 @@ function IconBadge({ icon: Icon, highlight = false }: IconBadgeProps) {
   return (
     <div
       className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-      style={{ background: highlight ? "rgba(0,230,163,0.16)" : "rgba(11,61,58,0.06)" }}
+      style={{ background: highlight ? "rgba(74,107,83,0.16)" : "rgba(28,51,34,0.06)" }}
     >
       <Icon size={24} color={highlight ? TEAL.accentDeep : TEAL.ink} />
     </div>
   );
 }
 
-
-
-// Vertical connected-flow item for the Responsibilities timeline.
 function TimelineItem({ icon: Icon, title, desc, isLast = false }: TimelineItemProps) {
   return (
     <motion.div variants={fadeUp} className="relative flex gap-8 pb-16 last:pb-0">
       {!isLast && (
         <div
           className="absolute left-7 top-14 bottom-0 w-[2px]"
-          style={{ background: "linear-gradient(to bottom, rgba(0,230,163,0.4), rgba(0,230,163,0.05))" }}
+          style={{ background: "linear-gradient(to bottom, rgba(74,107,83,0.4), rgba(74,107,83,0.05))" }}
         />
       )}
       <div
         className="relative z-10 w-14 h-14 rounded-full flex items-center justify-center shrink-0"
-        style={{ background: "rgba(0,230,163,0.12)", boxShadow: `0 0 24px ${TEAL.glow}` }}
+        style={{ background: "rgba(74,107,83,0.12)", boxShadow: `0 0 24px ${TEAL.glow}` }}
       >
         <Icon size={22} color={TEAL.accent} />
       </div>
@@ -193,9 +174,6 @@ function TimelineItem({ icon: Icon, title, desc, isLast = false }: TimelineItemP
   );
 }
 
-/* =========================================================
-   CONTENT
-========================================================= */
 const STATS = [
   { icon: GraduationCap, to: 100, suffix: "+", label: "Campuses" },
   { icon: Users, to: 500, suffix: "+", label: "Ambassadors" },
@@ -320,14 +298,6 @@ const AMBASSADOR_LEVELS = [
   },
 ];
 
-/* =========================================================
-   PAGE
-   Every section sits on the light teal field (TEAL.bg /
-   bgSoft / bgTint — never dark). The one deliberate exception
-   is the closing CTA, which uses TEAL.ink as a background for
-   a cinematic finish. Flagged in the chat reply, not buried
-   here — change it if you want the whole page light, no exceptions.
-========================================================= */
 function Ambassador() {
       const [activePerk, setActivePerk] = useState(0);
       const handleNextPerk = () => {
@@ -340,15 +310,14 @@ function Ambassador() {
         {/* ============ HERO ============ */}
         <section className="relative min-h-[85vh] overflow-hidden" style={{ background: `linear-gradient(180deg, ${TEAL.bgSoft} 0%, ${TEAL.bg} 100%)` }}>
           <GlowOrb className="top-[-200px] right-[-100px]" size={700} />
-          <GlowOrb className="bottom-[-250px] left-[-100px]" color="rgba(0,181,137,0.12)" size={600} />
+          <GlowOrb className="bottom-[-250px] left-[-100px]" color="rgba(74,107,83,0.12)" size={600} />
 
-          {/* faint grid, tinted ink instead of white */}
           <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
             <div
               className="w-full h-full"
               style={{
                 backgroundImage:
-                  "linear-gradient(rgba(11,61,58,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(11,61,58,0.5) 1px, transparent 1px)",
+                  "linear-gradient(rgba(28,51,34,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(28,51,34,0.5) 1px, transparent 1px)",
                 backgroundSize: "70px 70px",
               }}
             />
@@ -361,12 +330,11 @@ function Ambassador() {
               animate="show"
               className="relative z-10 grid lg:grid-cols-2 gap-12 items-center px-0 lg:px-0 pt-28 pb-14 lg:pt-32 lg:pb-16"
             >
-              {/* LEFT */}
               <div>
                 <motion.div
                   variants={fadeUp}
                   className="inline-flex items-center gap-3 px-5 py-3 rounded-full mb-10 mt-4"
-                  style={{ background: "rgba(255,255,255,0.8)", border: "1px solid rgba(11,61,58,0.1)", backdropFilter: "blur(10px)" }}
+                  style={{ background: "rgba(255,255,255,0.8)", border: "1px solid rgba(28,51,34,0.1)", backdropFilter: "blur(10px)" }}
                 >
                   <motion.div
                     className="w-2 h-2 rounded-full"
@@ -438,7 +406,7 @@ function Ambassador() {
                     whileTap={{ scale: 0.98 }}
                     transition={{ duration: 0.3 }}
                     className="px-8 py-5 rounded-full"
-                    style={{ border: `1.5px solid rgba(11,61,58,0.25)`, background: "rgba(255,255,255,0.5)", color: TEAL.ink, fontWeight: 600 }}
+                    style={{ border: `1.5px solid rgba(28,51,34,0.25)`, background: "rgba(255,255,255,0.5)", color: TEAL.ink, fontWeight: 600 }}
                   >
                     Explore Program
                   </motion.button>
@@ -453,8 +421,6 @@ function Ambassador() {
                 </motion.p>
               </div>
 
-              {/* RIGHT — floating frosted dashboard */}
-              {/* RIGHT SIDE */}
               <div className="relative h-[500px] hidden lg:block mt-[78px]">
 
                 <motion.div
@@ -463,7 +429,7 @@ function Ambassador() {
                   transition={{ duration: 1.2 }}
                   className="absolute inset-0 rounded-[40px] overflow-hidden"
                   style={{
-                    boxShadow: "0 30px 80px rgba(34,104,107,0.18)",
+                    boxShadow: "0 30px 80px rgba(28,51,34,0.18)",
                   }}
                 >
                   <img
@@ -476,7 +442,7 @@ function Ambassador() {
                     className="absolute inset-0"
                     style={{
                       background:
-                        "linear-gradient(135deg, rgba(34,104,107,0.35), rgba(49,139,151,0.20))",
+                        "linear-gradient(135deg, rgba(28,51,34,0.35), rgba(12,108,87,0.20))",
                       mixBlendMode: "multiply",
                     }}
                   />
@@ -486,7 +452,6 @@ function Ambassador() {
           </div>
         </section>
 
-        
         {/* ============ STATS ============ */}
         <section
           className="relative py-28 px-6 overflow-hidden"
@@ -524,19 +489,19 @@ function Ambassador() {
                  whileHover={{
                     y: -10,
                     scale: 1.02,
-                    boxShadow: "0 25px 50px rgba(34,104,107,0.12)"
+                    boxShadow: "0 25px 50px rgba(28,51,34,0.12)"
                   }}
                   transition={{ duration: 0.25 }}
                   className="rounded-[24px] p-7 text-center"
                   style={{
                     background: "rgba(255,255,255,0.9)",
-                    border: "1px solid rgba(34,104,107,0.07)",
-                    boxShadow: "0 10px 24px rgba(34,104,107,0.06)",
+                    border: "1px solid rgba(28,51,34,0.07)",
+                    boxShadow: "0 10px 24px rgba(28,51,34,0.06)",
                   }}
                 >
                   <div
                     className="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-4"
-                    style={{ background: "rgba(0,230,163,0.12)" }}
+                    style={{ background: "rgba(74,107,83,0.12)" }}
                   >
                     <stat.icon size={14} color={TEAL.accentDeep} />
                   </div>
@@ -579,7 +544,7 @@ function Ambassador() {
         >
           <GlowOrb
             className="top-20 left-1/2 -translate-x-1/2"
-            color="rgba(0,230,163,0.08)"
+            color="rgba(74,107,83,0.08)"
             size={500}
           />
 
@@ -590,7 +555,6 @@ function Ambassador() {
             viewport={{ once: true }}
             className="relative z-10 max-w-6xl mx-auto"
           >
-            {/* HEADING */}
             <div className="relative text-center">
 
               <span
@@ -672,7 +636,6 @@ function Ambassador() {
               </motion.p>
             </div>
 
-            {/* CHECKLIST */}
             <motion.div
               variants={fadeUp}
               className="grid md:grid-cols-2 gap-x-20 gap-y-10 mt-24"
@@ -713,7 +676,7 @@ function Ambassador() {
                   <div
                     className="w-7 h-7 rounded-full flex items-center justify-center mt-1"
                     style={{
-                      background: "rgba(0,230,163,0.12)",
+                      background: "rgba(74,107,83,0.12)",
                     }}
                   >
                     <span
@@ -767,7 +730,7 @@ function Ambassador() {
         >
           <GlowOrb
             className="bottom-0 right-0"
-            color="rgba(0,230,163,0.05)"
+            color="rgba(74,107,83,0.05)"
             size={700}
           />
 
@@ -778,7 +741,6 @@ function Ambassador() {
             viewport={{ once: true }}
             className="relative z-10 max-w-7xl mx-auto"
           >
-            {/* 02 */}
             <span
               style={{
                 position: "absolute",
@@ -798,7 +760,6 @@ function Ambassador() {
 
             <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-24 items-start">
 
-              {/* LEFT SIDE */}
               <div>
                 <motion.h2
                   variants={fadeUp}
@@ -819,12 +780,10 @@ function Ambassador() {
                 ))}
               </div>
 
-              {/* RIGHT SIDE */}
               <div className="sticky top-32">
 
                 <div className="grid grid-cols-2 gap-8">
 
-                  {/* TOP SMALL */}
                   <motion.div
                     whileHover={{ scale: 1.05, y: -6 }}
                     className="col-span-2 flex justify-center mt-8"
@@ -839,13 +798,12 @@ function Ambassador() {
                         className="absolute inset-0"
                         style={{
                           background:
-                            "linear-gradient(135deg, rgba(34,104,107,0.18), rgba(49,139,151,0.08))",
+                            "linear-gradient(135deg, rgba(28,51,34,0.18), rgba(12,108,87,0.08))",
                         }}
                       />
                     </div>
                   </motion.div>
 
-                  {/* BOTTOM LEFT */}
                   <motion.div
                     whileHover={{ scale: 1.04, y: -8 }}
                   >
@@ -859,13 +817,12 @@ function Ambassador() {
                         className="absolute inset-0"
                         style={{
                           background:
-                            "linear-gradient(135deg, rgba(34,104,107,0.18), rgba(49,139,151,0.08))",
+                            "linear-gradient(135deg, rgba(28,51,34,0.18), rgba(12,108,87,0.08))",
                         }}
                       />
                     </div>
                   </motion.div>
 
-                  {/* BOTTOM RIGHT */}
                   <motion.div
                     whileHover={{ scale: 1.04, y: -8 }}
                   >
@@ -879,13 +836,12 @@ function Ambassador() {
                         className="absolute inset-0"
                         style={{
                           background:
-                            "linear-gradient(135deg, rgba(34,104,107,0.18), rgba(49,139,151,0.08))",
+                            "linear-gradient(135deg, rgba(28,51,34,0.18), rgba(12,108,87,0.08))",
                         }}
                       />
                     </div>
                   </motion.div>
 
-                  {/* BOTTOM SMALL */}
                   <motion.div
                     whileHover={{ scale: 1.05, y: -6 }}
                     className="col-span-2 flex justify-center"
@@ -900,7 +856,7 @@ function Ambassador() {
                         className="absolute inset-0"
                         style={{
                           background:
-                            "linear-gradient(135deg, rgba(34,104,107,0.18), rgba(49,139,151,0.08))",
+                            "linear-gradient(135deg, rgba(28,51,34,0.18), rgba(12,108,87,0.08))",
                         }}
                       />
                     </div>
@@ -914,7 +870,7 @@ function Ambassador() {
 
         {/* ============ ELIGIBILITY — CHECKLIST ============ */}
         <section className="relative py-32 px-6 overflow-hidden" style={{ background: TEAL.bg }}>
-          <GlowOrb className="bottom-0 right-[-150px]" color="rgba(0,230,163,0.07)" size={500} />
+          <GlowOrb className="bottom-0 right-[-150px]" color="rgba(74,107,83,0.07)" size={500} />
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -948,7 +904,6 @@ function Ambassador() {
             </motion.h2>
             <div className="grid lg:grid-cols-3 gap-6">
 
-              {/* LARGE CARD */}
               <motion.div
                 variants={fadeUp}
                 whileHover={{
@@ -959,15 +914,15 @@ function Ambassador() {
                 style={{
                   background:
                     "linear-gradient(135deg, rgba(255,255,255,0.92), rgba(248,252,251,0.78))",
-                  border: "1px solid rgba(49,139,151,0.18)",
+                  border: "1px solid rgba(12,108,87,0.18)",
                   backdropFilter: "blur(12px)",
-                  boxShadow: "0 20px 40px rgba(34,104,107,0.06)",
-                  borderLeft: "3px solid #318B97",
+                  boxShadow: "0 20px 40px rgba(28,51,34,0.06)",
+                  borderLeft: "3px solid #0C6C57",
                 }}
               >
                 <div
                   className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                  style={{ background: "rgba(0,230,163,0.10)" }}
+                  style={{ background: "rgba(74,107,83,0.10)" }}
                 >
                   {React.createElement(ELIGIBILITY[0].icon, { size: 26, color: TEAL.ink })}
                 </div>
@@ -994,22 +949,21 @@ function Ambassador() {
                 </p>
               </motion.div>
 
-              {/* SMALL CARD */}
               <motion.div
                 variants={fadeUp}
                 whileHover={{ y: -6 }}
                 className="rounded-[32px] p-8"
                 style={{
                   background: "rgba(255,255,255,0.82)",
-                  border: "1px solid rgba(34,104,107,0.08)",
+                  border: "1px solid rgba(28,51,34,0.08)",
                   backdropFilter: "blur(12px)",
-                  boxShadow: "0 16px 40px rgba(34,104,107,0.06)",
-                  borderTop: "3px solid #318B97",
+                  boxShadow: "0 16px 40px rgba(28,51,34,0.06)",
+                  borderTop: "3px solid #0C6C57",
                 }}
               >
                 <div
                   className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                  style={{ background: "rgba(0,230,163,0.10)" }}
+                  style={{ background: "rgba(74,107,83,0.10)" }}
                 >
                   {React.createElement(ELIGIBILITY[1].icon, { size: 24, color: TEAL.ink })}
                 </div>
@@ -1035,13 +989,12 @@ function Ambassador() {
                 </p>
               </motion.div>
 
-              {/* BOTTOM CARDS */}
               {ELIGIBILITY.slice(2).map((item, index) => {
 
                 const accentBorders = [
-                  "#318B97", // teal
-                  "#00E6A3", // mint
-                  "#8FAAA6", // sage
+                  "#0C6C57",
+                  "#D4B85C",
+                  "#A3C6AE",
                 ];
 
                 return (
@@ -1056,10 +1009,10 @@ function Ambassador() {
                     style={{
                       background:
                         "linear-gradient(135deg, rgba(255,255,255,0.92), rgba(248,252,251,0.78))",
-                      border: "1px solid rgba(49,139,151,0.18)",
+                      border: "1px solid rgba(12,108,87,0.18)",
                       borderBottom: `3px solid ${accentBorders[index]}`,
                       backdropFilter: "blur(12px)",
-                      boxShadow: "0 20px 40px rgba(34,104,107,0.06)",
+                      boxShadow: "0 20px 40px rgba(28,51,34,0.06)",
                     }}
                   >
                     <div
@@ -1110,7 +1063,7 @@ function Ambassador() {
           <GlowOrb
             className="top-0 right-[-120px]"
             size={500}
-            color="rgba(68,155,133,0.08)"
+            color="rgba(74,107,83,0.08)"
           />
 
           <motion.div
@@ -1236,13 +1189,12 @@ function Ambassador() {
               Perks worth the effort.
             </motion.h2>
             <div className="grid lg:grid-cols-[40%_60%] items-center gap-12 mt-20">
-              {/* WHEEL */}
               <div className="relative flex items-center justify-center h-[500px]">
 
                 <div
                   className="absolute w-[340px] h-[340px] rounded-full"
                   style={{
-                    border: `2px solid rgba(49,139,151,0.12)`,
+                    border: `2px solid rgba(12,108,87,0.12)`,
                   }}
                 />
 
@@ -1275,7 +1227,7 @@ function Ambassador() {
                           color: isActive ? "white" : TEAL.ink,
 
                           boxShadow: isActive
-                          ? "0 0 40px rgba(68,155,133,0.35)"
+                          ? "0 0 40px rgba(74,107,83,0.35)"
                           : "0 10px 20px rgba(0,0,0,0.05)"
                         }}
                       >
@@ -1285,12 +1237,11 @@ function Ambassador() {
                   );
                 })}
 
-                {/* CENTER */}
                 <div
                   className="absolute w-[140px] h-[140px] rounded-full flex items-center justify-center"
                   style={{
                     background: "white",
-                    boxShadow: "0 25px 60px rgba(34,104,107,0.12)",
+                    boxShadow: "0 25px 60px rgba(28,51,34,0.12)",
                   }}
                 >
                   <span
@@ -1305,8 +1256,6 @@ function Ambassador() {
                 </div>
 
               </div>
-
-              {/* ACTIVE CONTENT */}
 
               <div className="relative min-h-[320px] flex items-center">
 
@@ -1446,8 +1395,6 @@ function Ambassador() {
 
             <div className="grid lg:grid-cols-[38%_62%] gap-20 mt-20">
 
-              {/* LEFT */}
-
               <div className="space-y-5">
 
                 {AMBASSADOR_LEVELS.map((item, i) => (
@@ -1467,8 +1414,8 @@ function Ambassador() {
 
                       boxShadow:
                         activeLevel === i
-                          ? "0 20px 40px rgba(68,155,133,0.25)"
-                          : "0 10px 25px rgba(34,104,107,0.06)",
+                          ? "0 20px 40px rgba(74,107,83,0.25)"
+                          : "0 10px 25px rgba(28,51,34,0.06)",
                     }}
                   >
                     <p
@@ -1497,8 +1444,6 @@ function Ambassador() {
                 ))}
 
               </div>
-
-              {/* RIGHT */}
 
               <AnimatePresence mode="wait">
 
@@ -1535,7 +1480,6 @@ function Ambassador() {
                     
                   <div className="mt-10 space-y-5">
 
-                    {/* REWARDS */}
                     {AMBASSADOR_LEVELS[activeLevel].rewards.map((reward) => (
 
                       <div
@@ -1560,13 +1504,12 @@ function Ambassador() {
 
                     ))}
 
-                    {/* EXTRA REWARDS */}
                     {AMBASSADOR_LEVELS[activeLevel].extras.length > 0 && (
 
                       <div
                         className="pt-8 mt-10"
                         style={{
-                          borderTop: "1px solid rgba(49,139,151,0.15)",
+                          borderTop: "1px solid rgba(12,108,87,0.15)",
                         }}
                       >
 
@@ -1615,7 +1558,6 @@ function Ambassador() {
 
                     )}
 
-                    {/* TOP PERFORMER AWARDS (Only Elite) */}
                     {activeLevel === 3 && (
 
                       <motion.div
@@ -1623,7 +1565,7 @@ function Ambassador() {
                         animate={{ opacity: 1 }}
                         className="pt-8 mt-10"
                         style={{
-                          borderTop: "1px solid rgba(49,139,151,0.15)",
+                          borderTop: "1px solid rgba(12,108,87,0.15)",
                         }}
                       >
 
@@ -1773,7 +1715,7 @@ function Ambassador() {
                 className="hidden lg:block absolute top-10 left-0 right-0 h-[2px] origin-left"
                 style={{
                   background:
-                    "linear-gradient(90deg, rgba(68,155,133,0.08), rgba(68,155,133,0.45), rgba(68,155,133,0.08))",
+                    "linear-gradient(90deg, rgba(74,107,83,0.08), rgba(74,107,83,0.45), rgba(74,107,83,0.08))",
                 }}
               />
               {APPLICATION_STEPS.map((step, i) => (
@@ -1788,9 +1730,9 @@ function Ambassador() {
                     className="relative z-10 w-20 h-20 rounded-full flex items-center justify-center mb-8"
                     style={{
                     background:
-                      "linear-gradient(to bottom, rgba(68,155,133,0.28), rgba(68,155,133,0.05))",
+                      "linear-gradient(to bottom, rgba(74,107,83,0.28), rgba(74,107,83,0.05))",
                     boxShadow:
-                      "0 0 35px rgba(68,155,133,0.18), 0 10px 30px rgba(68,155,133,0.10)",
+                      "0 0 35px rgba(74,107,83,0.18), 0 10px 30px rgba(74,107,83,0.10)",
                   }}
                   >
                     <motion.div
@@ -1804,7 +1746,7 @@ function Ambassador() {
                         }}
                         className="absolute inset-0 rounded-full"
                         style={{
-                          border: "1px solid rgba(68,155,133,0.22)",
+                          border: "1px solid rgba(74,107,83,0.22)",
                         }}
                       />
                       <step.icon size={28} color={TEAL.ink} />
@@ -1820,24 +1762,19 @@ function Ambassador() {
           </motion.div>
         </section>
 
-        {/* ============ CTA — CINEMATIC CLOSE ============
-            Intentional exception to "light everywhere": uses TEAL.ink
-            as a background for contrast. Swap to TEAL.bgTint below if
-            you want zero dark sections on the page. */}
+        {/* ============ CTA — CINEMATIC CLOSE ============ */}
 <section
   className="relative py-44 px-6 overflow-hidden"
   style={{
-    background: `linear-gradient(180deg, ${TEAL.ink} 0%, #0B3437 100%)`,
+    background: `linear-gradient(180deg, ${TEAL.ink} 0%, #0F2419 100%)`,
   }}
 >
-  {/* BACKGROUND GLOW */}
   <GlowOrb
     className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
     size={900}
-    color="rgba(68,155,133,0.18)"
+    color="rgba(74,107,83,0.18)"
   />
 
-  {/* BIG WATERMARK */}
   <span
     className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
     style={{
@@ -1853,7 +1790,6 @@ function Ambassador() {
     2026
   </span>
 
-  {/* FLOATING DOTS */}
   {[
     { top: "15%", left: "10%", d: 7 },
     { top: "70%", left: "18%", d: 9 },
@@ -1890,7 +1826,6 @@ function Ambassador() {
     className="relative z-10 max-w-4xl mx-auto text-center"
   >
 
-    {/* BADGE */}
     <motion.div
       variants={fadeUp}
       className="inline-flex items-center gap-3 px-6 py-3 rounded-full mb-10"
@@ -1913,7 +1848,6 @@ function Ambassador() {
       </span>
     </motion.div>
 
-    {/* HEADING */}
     <motion.h2
       variants={fadeUp}
       style={{
@@ -1928,7 +1862,7 @@ function Ambassador() {
       <span
         className="block"
         style={{
-          background: `linear-gradient(135deg, ${TEAL.accent}, #97D8C4)`,
+          background: `linear-gradient(135deg, ${TEAL.accent}, #D4B85C)`,
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
         }}
@@ -1937,7 +1871,6 @@ function Ambassador() {
       </span>
     </motion.h2>
 
-    {/* DESCRIPTION */}
     <motion.p
       variants={fadeUp}
       className="mt-10 max-w-2xl mx-auto"
@@ -1952,7 +1885,6 @@ function Ambassador() {
       long after graduation.
     </motion.p>
 
-    {/* BUTTON */}
     <motion.div variants={fadeUp} className="mt-14">
       <motion.button
         whileHover={{
@@ -1965,7 +1897,7 @@ function Ambassador() {
         className="inline-flex items-center gap-3 px-10 py-5 rounded-full"
         style={{
           background: `linear-gradient(135deg, ${TEAL.accent}, ${TEAL.accentDeep})`,
-          boxShadow: "0 0 60px rgba(68,155,133,0.35)",
+          boxShadow: "0 0 60px rgba(74,107,83,0.35)",
           color: "#FFFFFF",
           fontWeight: 700,
           fontSize: "18px",
@@ -1976,7 +1908,6 @@ function Ambassador() {
       </motion.button>
     </motion.div>
 
-    {/* STATS */}
     <motion.div
       variants={fadeUp}
       className="flex flex-wrap justify-center gap-8 mt-14"
