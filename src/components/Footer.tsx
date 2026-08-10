@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import playstoreImg from '../image/icon/playstore.webp';
 import appstoreImg from '../image/icon/appstore.webp';
 import logoImg from '../image/icon/logo.webp';
+import Community from '../pages/Community';
 
 const footerLinks = {
   Company: ['About Us', 'Blog', 'Careers', 'Contact Us'],
   Offerings: ['AyurGenX Store', 'Membership Plans', "Women's Wellness", 'Preventive Programs'],
-  Opportunities: ['AyurGenX Hackathon', 'Campus Ambassador', 'Partner With Us'],
+  Opportunities: ['AyurGenX Hackathon', 'Campus Ambassador', 'Partner With Us', 'Community'],
 };
 
 const socialLinks = [
@@ -156,6 +157,7 @@ function FooterLink({ label }: { label: string }) {
     'Campus Ambassador': '/ambassador',
     'Privacy Policy': '/privacy',
     'Terms & Conditions': '/terms',
+    'Community': '/community'
   };
   const to = routeMap[label];
 

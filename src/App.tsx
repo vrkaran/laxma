@@ -49,6 +49,7 @@ import Thyroid from './pages/diseases/thyroid';
 import Hackathon from './pages/hackathon';
 import Ambassador from './pages/Ambassador'
 import Home from "./pages/Home"
+import Community from './pages/Community';
 
 function App() {
   return (
@@ -100,7 +101,7 @@ function App() {
         <Route path="/library" element={<PageTransition><StaticPage title="Health Library" /></PageTransition>} />
         <Route path="/success-stories" element={<PageTransition><StaticPage title="Success Stories" /></PageTransition>} />
         <Route path="/expert-advice" element={<PageTransition><StaticPage title="Expert Advice" /></PageTransition>} />
-        <Route path="/community" element={<PageTransition><StaticPage title="Community" /></PageTransition>} />
+        <Route path="/community" element={<PageTransition><Community/></PageTransition>} />
         <Route path="/diseases/pcos-pcod" element={<PageTransition><PcosPcod /></PageTransition>} />
         <Route path="/diseases/chronic-disease" element={<PageTransition><ChronicDisease /></PageTransition>} />
         <Route path="/diseases/constipation" element={<PageTransition><Constipation /></PageTransition>} />
@@ -119,6 +120,7 @@ function App() {
         <Route path="/cookies" element={<PageTransition><CookiePolicy /></PageTransition>} />
         <Route path="/hackathon" element={<Hackathon />} />
         <Route path="/ambassador" element={<Ambassador />} />
+        <Route path="/comunity" element={<Community />} />
       </Routes>
       <Footer />
     </div>
