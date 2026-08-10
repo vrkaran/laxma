@@ -109,14 +109,14 @@ export default function NavBar() {
       )}
 
               {/*Announcement Banner */}
-              {location.pathname !== "/ambassador" &&
-              location.pathname !== "/programs" && (
+              {location.pathname !== "/comunity" &&
+              (
                 <Link
-                  to="/ambassador"
+                  to="/comunity"
                   className="block w-full bg-slate-900 text-white overflow-hidden whitespace-nowrap py-2 border-b border-white/5"
                 >
                   <div className="animate-marquee inline-block text-xs font-medium tracking-wider opacity-90">
-                    🌱 Become an AyurGenX Campus Ambassador • Unlock Leadership, Networking & Internship Opportunities • Explore Now →
+                    🌱 Join the AyurGenX Community • Connect, Learn & Grow with Healthcare Innovators • Explore Now →
                   </div>
                 </Link>
               )}
