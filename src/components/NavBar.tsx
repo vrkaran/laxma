@@ -116,7 +116,7 @@ export default function NavBar() {
                   className="block w-full bg-slate-900 text-white overflow-hidden whitespace-nowrap py-2 border-b border-white/5"
                 >
                   <div className="animate-marquee inline-block text-xs font-medium tracking-wider opacity-90">
-                    🌱 Join the AyurGenX Community • Connect, Learn & Grow with Healthcare Innovators • Explore Now →
+                    Join the AyurGenX Community • Connect, Learn & Grow with Healthcare Innovators • Explore Now →
                   </div>
                 </Link>
               )}
